@@ -1,0 +1,20 @@
+{
+    "name": "aluno/loja_online",
+    "description": "Projeto para testar a instalação do Composer",
+    "type": "project",
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "Aluno\\LojaOnline\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Aurinon"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
