@@ -1,16 +1,16 @@
 {
-    "name": "aluno/loja_online",
-    "description": "Projeto para testar a instalação do Composer",
+    "name": "aluno/loja-virtual",
+    "description": "Sistema de loja virtual desenvolvido na UC12",
     "type": "project",
     "license": "proprietary",
     "autoload": {
         "psr-4": {
-            "Aluno\\LojaOnline\\": "src/"
+            "APP\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "Aurinon"
+            "name": "Aurinon Junior"
         }
     ],
     "minimum-stability": "stable",

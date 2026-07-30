@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Controllers\Site;
 
-use App\Controllers\Controller;
-
-final class HomeController extends Controller
+class HomeController
 {
     public function index(): void
     {
-        $this->view(
-            'site/home',
-            [
-                'tituloPagina' => 'Página inicial',
-                'mensagem' => 'Bem-vindo à Loja Online',
-            ]
-        );
+        $arquivoView = dirname(__DIR__, 3) . '/views/site/home.php';
+
+        if (!is_file($arquivoView)) {
+            throw new \RuntimeException(
+                'A página inicial não foi encontrada.'
+            );
+        }
+
+        require $arquivoView;
     }
 }
