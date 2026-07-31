@@ -3,15 +3,15 @@
 declare(strict_types=1);
 
 
-use App\Controllers\Site\HomeController;
+use App\Controllers\Site\QuemSomosController;
 
 
 return [
     [
         'method' => 'GET',
-        'path' => '/',
+        'path' => '/quemsomos',
         'action' => [
-            HomeController::class,
+            QuemSomosController::class,
             'index',
         ],
     ],

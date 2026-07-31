@@ -3,15 +3,15 @@
 declare(strict_types=1);
 
 
-use App\Controllers\Site\HomeController;
+use App\Controllers\Site\LoginAdminController;
 
 
 return [
     [
         'method' => 'GET',
-        'path' => '/',
+        'path' => '/admlogin',
         'action' => [
-            HomeController::class,
+            LoginAdminController::class,
             'index',
         ],
     ],

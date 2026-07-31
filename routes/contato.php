@@ -3,15 +3,15 @@
 declare(strict_types=1);
 
 
-use App\Controllers\Site\HomeController;
+use App\Controllers\Site\ContatoController;
 
 
 return [
     [
         'method' => 'GET',
-        'path' => '/',
+        'path' => '/contato',
         'action' => [
-            HomeController::class,
+            ContatoController::class,
             'index',
         ],
     ],

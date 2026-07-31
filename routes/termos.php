@@ -3,15 +3,15 @@
 declare(strict_types=1);
 
 
-use App\Controllers\Site\HomeController;
+use App\Controllers\Site\TermosController;
 
 
 return [
     [
         'method' => 'GET',
-        'path' => '/',
+        'path' => '/termos',
         'action' => [
-            HomeController::class,
+            TermosController::class,
             'index',
         ],
     ],

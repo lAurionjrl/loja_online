@@ -4,13 +4,15 @@ declare(strict_types=1);
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
+
 $raizProjeto = dirname(__DIR__);
 
 $rotas = array_merge(
     require $raizProjeto . '/routes/web.php',
-    require $raizProjeto . '/routes/cliente.php',
-    require $raizProjeto . '/routes/admin.php',
-    require $raizProjeto . '/src/site/HomeController.php'
+    require $raizProjeto . '/routes/loginadmin.php',
+    require $raizProjeto . '/routes/contato.php',
+    require $raizProjeto . '/routes/termos.php',
+    require $raizProjeto . '/routes/quemsomos.php',
 );
 
 $metodoHttp = $_SERVER['REQUEST_METHOD'] ?? 'GET';
