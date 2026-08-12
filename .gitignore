@@ -22,3 +22,8 @@ rad.json
 #Test results file
 TestResults.xml
 /vendor/
+.env
+.env.local
+.env.production
+/storage/logs/*
+!/storage/logs/.gitkeep

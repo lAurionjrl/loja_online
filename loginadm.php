@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "conexao/conexao.php";
+require_once "database/conexao.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Exemplo simplificado de autenticação
