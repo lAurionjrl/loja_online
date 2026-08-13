@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Controllers\Site;
 
-class BuscaController
+class PerguntasfrequentesController
 {
     public function index(): void
     {
-        $arquivoView = dirname(__DIR__, 3) . '/views/site/busca.php';
+        $arquivoView = dirname(__DIR__, 3) . '/views/site/perguntasfrequentes.php';
 
         if (!is_file($arquivoView)) {
             throw new \RuntimeException(

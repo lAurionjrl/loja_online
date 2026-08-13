@@ -46,9 +46,9 @@
                                 Ajuda
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownAjuda">
-                                <li><a class="dropdown-item" href="ajuda/?v=1">Central de ajuda</a></li>
-                                <li><a class="dropdown-item" href="ajuda/?v=2">Perguntas frequentes</a></li>
-                                <li><a class="dropdown-item" href="ajuda/?v=3">Rastrear pedido</a></li>
+                                <li><a class="dropdown-item" href="centraldeajuda/?v=1">Central de ajuda</a></li>
+                                <li><a class="dropdown-item" href="perguntasfrequentes/?v=2">Perguntas frequentes</a></li>
+                                <li><a class="dropdown-item" href="rastrearpedidos/?v=3">Rastrear pedido</a></li>
                                 <li><a class="dropdown-item" href="ajuda/?v=4">Trocas e devoluções</a></li>
                                 <li><a class="dropdown-item" href="ajuda/?v=5">Fale conosco</a></li>
                             </ul>
