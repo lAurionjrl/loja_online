@@ -32,7 +32,7 @@ use App\Helpers\View;
 </head>
 <body>
 
-   
+    
 
     <!-- Navbar principal -->
     <?php View::componente('site/header');?>
@@ -41,7 +41,7 @@ use App\Helpers\View;
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    Ajuda fale conosco
+                   troca e devoluções
                 </div>
             </div>
         </div>

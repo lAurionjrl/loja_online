@@ -1,4 +1,21 @@
-<header class="sticky-top bg-white shadow-sm">
+ <!-- Cabeçalho superior -->
+    <div class="topbar py-2 d-none d-md-block">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-start">
+                    <span class="text-white-50 me-3"><i class="bi bi-truck me-1" aria-hidden="true"></i> Frete Grátis para compras acima de R$ 199</span>
+                    <span class="text-white-50"><i class="bi bi-telephone me-1" aria-hidden="true"></i> (11) 4003-0000</span>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="rastrearpedido/?v=3" class="me-3"><i class="bi bi-geo-alt me-1" aria-hidden="true"></i> Rastrear pedido</a>
+                    <a href="centraldeajuda/?v=1" class="me-3"><i class="bi bi-question-circle me-1" aria-hidden="true"></i> Central de ajuda</a>
+                    <a href="faleconosco/?v=5"><i class="bi bi-envelope me-1" aria-hidden="true"></i> Fale Conosco</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <header class="sticky-top bg-white shadow-sm">
         <nav class="navbar navbar-expand-lg navbar-light py-3" aria-label="Navegação Principal">
             <div class="container">
                 <a class="navbar-brand text-primary fs-3" href="">Loja Online</a>
@@ -48,9 +65,9 @@
                             <ul class="dropdown-menu" aria-labelledby="dropdownAjuda">
                                 <li><a class="dropdown-item" href="centraldeajuda/?v=1">Central de ajuda</a></li>
                                 <li><a class="dropdown-item" href="perguntasfrequentes/?v=2">Perguntas frequentes</a></li>
-                                <li><a class="dropdown-item" href="rastrearpedidos/?v=3">Rastrear pedido</a></li>
-                                <li><a class="dropdown-item" href="ajuda/?v=4">Trocas e devoluções</a></li>
-                                <li><a class="dropdown-item" href="ajuda/?v=5">Fale conosco</a></li>
+                                <li><a class="dropdown-item" href="rastrearpedido/?v=3">Rastrear pedido</a></li>
+                                <li><a class="dropdown-item" href="trocaedevo/?v=4">Trocas e devoluções</a></li>
+                                <li><a class="dropdown-item" href="faleconosco/?v=5">Fale conosco</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -72,10 +89,10 @@
                                 <span>Conta</span>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAccount">
-                                <li><a class="dropdown-item" href="cliente/login">Entrar</a></li>
-                                <li><a class="dropdown-item" href="cliente/cadastro">Criar conta</a></li>
+                                <li><a class="dropdown-item" href="entrar/?v=1">Entrar</a></li>
+                                <li><a class="dropdown-item" href="criarconta/?=2">Criar conta</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="cliente/pedidos">Meus pedidos</a></li>
+                                <li><a class="dropdown-item" href="meuspedidos/?=v3">Meus pedidos</a></li>
                             </ul>
                         </div>
 

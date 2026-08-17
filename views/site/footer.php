@@ -32,7 +32,7 @@
                     <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
                         <li><a href="ajuda">Central de ajuda</a></li>
                         <li><a href="faq">Perguntas frequentes</a></li>
-                        <li><a href="rastrearpedido">Rastrear pedido</a></li>
+                        <li><a href="rastrearpedido/?v=3">Rastrear pedido</a></li>
                         <li><a href="trocas-devolucoes">Trocas e devoluções</a></li>
                         <li><a href="politica-de-entrega">Política de entrega</a></li>
                     </ul>

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-use App\Controllers\Site\RastrearpedidosController;
+use App\Controllers\Site\MeuspedidosController;
 
 return [
     [
         'method' => 'GET',
-        'path' => '/rastrearpedidos',
+        'path' => '/meuspedidos',
         'action' => [
-          RastrearpedidosController::class,
+          MeuspedidosController::class,
             'index',
         ],
     ],

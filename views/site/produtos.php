@@ -32,23 +32,7 @@ use App\Helpers\View;
 </head>
 <body>
 
-    <!-- Cabeçalho superior -->
-    <div class="topbar py-2 d-none d-md-block">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6 text-start">
-                    <span class="text-white-50 me-3"><i class="bi bi-truck me-1" aria-hidden="true"></i> Frete Grátis para compras acima de R$ 199</span>
-                    <span class="text-white-50"><i class="bi bi-telephone me-1" aria-hidden="true"></i> (11) 4003-0000</span>
-                </div>
-                <div class="col-md-6 text-end">
-                    <a href="rastrear-pedido" class="me-3"><i class="bi bi-geo-alt me-1" aria-hidden="true"></i> Rastrear pedido</a>
-                    <a href="ajuda" class="me-3"><i class="bi bi-question-circle me-1" aria-hidden="true"></i> Central de ajuda</a>
-                    <a href="contato"><i class="bi bi-envelope me-1" aria-hidden="true"></i> Fale Conosco</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    
     <!-- Navbar principal -->
     <?php View::componente('site/header');?>
 
@@ -56,7 +40,7 @@ use App\Helpers\View;
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    produtos
+                    Página produtos
                 </div>
             </div>
         </div>

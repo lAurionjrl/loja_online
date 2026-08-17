@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Controllers\Site;
 
-class RastrearpedidosController
+class MeuspedidosController
 {
     public function index(): void
     {
-        $arquivoView = dirname(__DIR__, 3) . '/views/site/rastrearpedidos.php';
+        $arquivoView = dirname(__DIR__, 3) . '/views/site/meuspedidos.php';
 
         if (!is_file($arquivoView)) {
             throw new \RuntimeException(
