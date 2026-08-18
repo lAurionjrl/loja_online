@@ -20,7 +20,7 @@
                                             <i class="bi bi-star-fill" aria-hidden="true"></i> (89)
                                         </div>
                                         <div class="fw-bold text-primary mb-2">R$ 1.599,00</div>
-                                        <a href="produto/smartphone-connect" class="btn btn-sm btn-outline-primary w-100">Ver detalhes</a>
+                                        <a href="categorias/?v=2/smartphone-connect" class="btn btn-sm btn-outline-primary w-100">Ver detalhes</a>
                                     </div>
                                 </div>
                             </div>
@@ -41,7 +41,7 @@
                                             <i class="bi bi-star-fill" aria-hidden="true"></i> (18)
                                         </div>
                                         <div class="fw-bold text-primary mb-2">R$ 249,00</div>
-                                        <a href="produto/fone-bluetooth-air" class="btn btn-sm btn-outline-primary w-100">Ver detalhes</a>
+                                        <a href="categorias/?v=3/fone-bluetooth-air" class="btn btn-sm btn-outline-primary w-100">Ver detalhes</a>
                                     </div>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                                             <i class="bi bi-star-fill" aria-hidden="true"></i> (112)
                                         </div>
                                         <div class="fw-bold text-primary mb-2">R$ 349,30</div>
-                                        <a href="produto/headset-gamer" class="btn btn-sm btn-outline-primary w-100">Ver detalhes</a>
+                                        <a href="categorias/?v=3/headset-gamer" class="btn btn-sm btn-outline-primary w-100">Ver detalhes</a>
                                     </div>
                                 </div>
                             </div>
@@ -83,7 +83,7 @@
                                             <i class="bi bi-star-fill" aria-hidden="true"></i> (31)
                                         </div>
                                         <div class="fw-bold text-primary mb-2">R$ 79,90</div>
-                                        <a href="produto/mouse-sem-fio" class="btn btn-sm btn-outline-primary w-100">Ver detalhes</a>
+                                        <a href="categorias/?v=3/mouse-sem-fio" class="btn btn-sm btn-outline-primary w-100">Ver detalhes</a>
                                     </div>
                                 </div>
                             </div>

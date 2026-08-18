@@ -30,11 +30,11 @@
                 <div class="col-6 col-md-3 col-lg-2">
                     <h6 class="mb-3">Atendimento</h6>
                     <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
-                        <li><a href="ajuda">Central de ajuda</a></li>
-                        <li><a href="faq">Perguntas frequentes</a></li>
-                        <li><a href="rastrearpedido">Rastrear pedido</a></li>
-                        <li><a href="trocas-devolucoes">Trocas e devoluções</a></li>
-                        <li><a href="politica-de-entrega">Política de entrega</a></li>
+                        <li><a href="centraldeajuda/?v=1">Central de ajuda</a></li>
+                        <li><a href="perguntasfrequentes/?v=2">Perguntas frequentes</a></li>
+                        <li><a href="rastrearpedido/?v=3">Rastrear pedido</a></li>
+                        <li><a href="trocaedevo/?v=4">Trocas e devoluções</a></li>
+                        <li><a href="politicasdeentrega">Política de entrega</a></li>
                     </ul>
                 </div>
 
@@ -42,7 +42,7 @@
                 <div class="col-6 col-md-3 col-lg-2">
                     <h6 class="mb-3">Minha Conta</h6>
                     <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
-                        <li><a href="cliente/login">Entrar</a></li>
+                        <li><a href="entrar/?v=1">Entrar</a></li>
                         <li><a href="cliente/cadastro">Criar conta</a></li>
                         <li><a href="cliente/pedidos">Meus pedidos</a></li>
                         <li><a href="carrinho">Carrinho</a></li>

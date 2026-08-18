@@ -41,7 +41,7 @@ use App\Helpers\View;
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    usuario pedidos
+                    usuário pedidos
                 </div>
             </div>
         </div>

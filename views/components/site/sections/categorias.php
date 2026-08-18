@@ -11,7 +11,7 @@
                 <div class="row g-3 g-md-4">
                     <!-- Informática -->
                     <div class="col-6 col-md-4 col-lg-2">
-                        <a href="categoria/informatica" class="text-decoration-none text-dark">
+                        <a href="categorias/?v=1" class="text-decoration-none text-dark">
                             <div class="card h-100 card-hover category-card text-center border-0 shadow-sm">
                                 <div class="card-img-wrapper">
                                     <img src="assets/img/categorias/informatica.jpg" alt="Informática" class="img-cover" onerror="this.onerror=null; this.parentNode.className='card-img-wrapper fallback-img'; this.parentNode.innerHTML='<i class=\"bi bi-laptop fs-1\"></i>';">
@@ -26,7 +26,7 @@
 
                     <!-- Celulares -->
                     <div class="col-6 col-md-4 col-lg-2">
-                        <a href="categoria/celulares" class="text-decoration-none text-dark">
+                        <a href="categorias/?v=2" class="text-decoration-none text-dark">
                             <div class="card h-100 card-hover category-card text-center border-0 shadow-sm">
                                 <div class="card-img-wrapper">
                                     <img src="assets/img/categorias/celulares.jpg" alt="Celulares" class="img-cover" onerror="this.onerror=null; this.parentNode.className='card-img-wrapper fallback-img'; this.parentNode.innerHTML='<i class=\"bi bi-phone fs-1\"></i>';">
@@ -41,7 +41,7 @@
 
                     <!-- Acessórios -->
                     <div class="col-6 col-md-4 col-lg-2">
-                        <a href="categoria/acessorios" class="text-decoration-none text-dark">
+                        <a href="categorias/?v=3" class="text-decoration-none text-dark">
                             <div class="card h-100 card-hover category-card text-center border-0 shadow-sm">
                                 <div class="card-img-wrapper">
                                     <img src="assets/img/categorias/acessorios.jpg" alt="Acessórios" class="img-cover" onerror="this.onerror=null; this.parentNode.className='card-img-wrapper fallback-img'; this.parentNode.innerHTML='<i class=\"bi bi-smartwatch fs-1\"></i>';">
@@ -56,7 +56,7 @@
 
                     <!-- Áudio -->
                     <div class="col-6 col-md-4 col-lg-2">
-                        <a href="categoria/audio" class="text-decoration-none text-dark">
+                        <a href="categorias/?v=3" class="text-decoration-none text-dark">
                             <div class="card h-100 card-hover category-card text-center border-0 shadow-sm">
                                 <div class="card-img-wrapper">
                                     <img src="assets/img/categorias/audio.jpg" alt="Áudio" class="img-cover" onerror="this.onerror=null; this.parentNode.className='card-img-wrapper fallback-img'; this.parentNode.innerHTML='<i class=\"bi bi-headphones fs-1\"></i>';">
@@ -71,7 +71,7 @@
 
                     <!-- Casa e decoração -->
                     <div class="col-6 col-md-4 col-lg-2">
-                        <a href="categoria/casa-decoracao" class="text-decoration-none text-dark">
+                        <a href="categorias/?v=4" class="text-decoration-none text-dark">
                             <div class="card h-100 card-hover category-card text-center border-0 shadow-sm">
                                 <div class="card-img-wrapper">
                                     <img src="assets/img/categorias/casa.jpg" alt="Casa e Decoração" class="img-cover" onerror="this.onerror=null; this.parentNode.className='card-img-wrapper fallback-img'; this.parentNode.innerHTML='<i class=\"bi bi-house-door fs-1\"></i>';">
@@ -86,7 +86,7 @@
 
                     <!-- Games -->
                     <div class="col-6 col-md-4 col-lg-2">
-                        <a href="categoria/games" class="text-decoration-none text-dark">
+                        <a href="categorias/?v=3" class="text-decoration-none text-dark">
                             <div class="card h-100 card-hover category-card text-center border-0 shadow-sm">
                                 <div class="card-img-wrapper">
                                     <img src="assets/img/categorias/games.jpg" alt="Games" class="img-cover" onerror="this.onerror=null; this.parentNode.className='card-img-wrapper fallback-img'; this.parentNode.innerHTML='<i class=\"bi bi-controller fs-1\"></i>';">

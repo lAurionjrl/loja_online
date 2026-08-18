@@ -33,7 +33,7 @@
                                     <div class="installment">10x de R$ 279,90 sem juros</div>
                                 </div>
                                 <div class="mt-auto-custom d-flex gap-2">
-                                    <a href="produto/notebook-essencial-15" class="btn btn-outline-primary btn-sm flex-grow-1">Ver produto</a>
+                                    <a href="categorias/?v=1/notebook-essencial-15" class="btn btn-outline-primary btn-sm flex-grow-1">Ver produto</a>
                                     <button type="button" class="btn btn-primary btn-sm" aria-label="Adicionar Notebook Essencial 15 ao carrinho">
                                         <i class="bi bi-cart-plus fs-6" aria-hidden="true"></i>
                                     </button>
@@ -66,7 +66,7 @@
                                     <div class="installment">10x de R$ 159,90 sem juros</div>
                                 </div>
                                 <div class="mt-auto-custom d-flex gap-2">
-                                    <a href="produto/smartphone-connect" class="btn btn-outline-primary btn-sm flex-grow-1">Ver produto</a>
+                                    <a href="categorias/?v=2/smartphone-connect" class="btn btn-outline-primary btn-sm flex-grow-1">Ver produto</a>
                                     <button type="button" class="btn btn-primary btn-sm" aria-label="Adicionar Smartphone Connect ao carrinho">
                                         <i class="bi bi-cart-plus fs-6" aria-hidden="true"></i>
                                     </button>
@@ -98,7 +98,7 @@
                                     <div class="installment">3x de R$ 83,00 sem juros</div>
                                 </div>
                                 <div class="mt-auto-custom d-flex gap-2">
-                                    <a href="produto/fone-bluetooth-air" class="btn btn-outline-primary btn-sm flex-grow-1">Ver produto</a>
+                                    <a href="categorias/?v=3/fone-bluetooth-air" class="btn btn-outline-primary btn-sm flex-grow-1">Ver produto</a>
                                     <button type="button" class="btn btn-primary btn-sm" aria-label="Adicionar Fone Bluetooth Air ao carrinho">
                                         <i class="bi bi-cart-plus fs-6" aria-hidden="true"></i>
                                     </button>
@@ -131,7 +131,7 @@
                                     <div class="installment">2x de R$ 89,55 sem juros</div>
                                 </div>
                                 <div class="mt-auto-custom d-flex gap-2">
-                                    <a href="produto/teclado-confort-plus" class="btn btn-outline-primary btn-sm flex-grow-1">Ver produto</a>
+                                    <a href="categorias/?v=3/teclado-confort-plus" class="btn btn-outline-primary btn-sm flex-grow-1">Ver produto</a>
                                     <button type="button" class="btn btn-primary btn-sm" aria-label="Adicionar Teclado Confort Plus ao carrinho">
                                         <i class="bi bi-cart-plus fs-6" aria-hidden="true"></i>
                                     </button>
@@ -163,7 +163,7 @@
                                     <div class="installment">À vista no PIX ou Boleto</div>
                                 </div>
                                 <div class="mt-auto-custom d-flex gap-2">
-                                    <a href="produto/mouse-sem-fio" class="btn btn-outline-primary btn-sm flex-grow-1">Ver produto</a>
+                                    <a href="categorias/?v=3/mouse-sem-fio" class="btn btn-outline-primary btn-sm flex-grow-1">Ver produto</a>
                                     <button type="button" class="btn btn-primary btn-sm" aria-label="Adicionar Mouse Sem Fio ao carrinho">
                                         <i class="bi bi-cart-plus fs-6" aria-hidden="true"></i>
                                     </button>
@@ -196,7 +196,7 @@
                                     <div class="installment">6x de R$ 149,87 sem juros</div>
                                 </div>
                                 <div class="mt-auto-custom d-flex gap-2">
-                                    <a href="produto/monitor-full-hd" class="btn btn-outline-primary btn-sm flex-grow-1">Ver produto</a>
+                                    <a href="categorias/?v=1/monitor-full-hd" class="btn btn-outline-primary btn-sm flex-grow-1">Ver produto</a>
                                     <button type="button" class="btn btn-primary btn-sm" aria-label="Adicionar Monitor Full HD ao carrinho">
                                         <i class="bi bi-cart-plus fs-6" aria-hidden="true"></i>
                                     </button>
@@ -228,7 +228,7 @@
                                     <div class="installment">4x de R$ 82,25 sem juros</div>
                                 </div>
                                 <div class="mt-auto-custom d-flex gap-2">
-                                    <a href="produto/caixa-de-som-portatil" class="btn btn-outline-primary btn-sm flex-grow-1">Ver produto</a>
+                                    <a href="categorias/?v=3/caixa-de-som-portatil" class="btn btn-outline-primary btn-sm flex-grow-1">Ver produto</a>
                                     <button type="button" class="btn btn-primary btn-sm" aria-label="Adicionar Caixa de Som Portátil ao carrinho">
                                         <i class="bi bi-cart-plus fs-6" aria-hidden="true"></i>
                                     </button>
@@ -261,7 +261,7 @@
                                     <div class="installment">5x de R$ 69,86 sem juros</div>
                                 </div>
                                 <div class="mt-auto-custom d-flex gap-2">
-                                    <a href="produto/headset-gamer" class="btn btn-outline-primary btn-sm flex-grow-1">Ver produto</a>
+                                    <a href="categorias/?v=3/headset-gamer" class="btn btn-outline-primary btn-sm flex-grow-1">Ver produto</a>
                                     <button type="button" class="btn btn-primary btn-sm" aria-label="Adicionar Headset Gamer ao carrinho">
                                         <i class="bi bi-cart-plus fs-6" aria-hidden="true"></i>
                                     </button>
