@@ -1,57 +1,71 @@
-<?php 
+<?php
 declare(strict_types=1);
 use App\Helpers\View;
-?>
+
+$tituloPagina = $tituloPagina
+    ?? 'Loja Online';
+$descricaoPagina = $descricaoPagina
+    ?? 'Loja online com produtos, ofertas, atendimento ao cliente e compra segura.';
+$baseUrl = defined('BASE_URL') ? BASE_URL : ''; ?>
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja Online | Produtos, ofertas e tecnologia</title>
-    
-    <meta name="description" content="Encontre produtos de informática, celulares, acessórios, games e ofertas especiais em nossa loja online.">
-    <meta name="keywords" content="loja online, eletrônicos, informática, celulares, acessórios, games, ofertas">
-    <meta name="author" content="Loja Online">
-    
-    <meta property="og:title" content="Loja Online | Produtos, ofertas e tecnologia">
-    <meta property="og:description" content="Encontre produtos de informática, celulares, acessórios, games e ofertas especiais em nossa loja online.">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="assets/img/og-image.jpg">
-    
-    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
-    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+        name="description"
+        content="">
+    <title><?=
+            htmlspecialchars(
+                $tituloPagina,
+                ENT_QUOTES,
+                'UTF-8'
+            )
+            ?></title>
+    <!--
+        Caminho-base das rotas no XAMPP.
+        Quando o projeto funcionar sem /public, altere para:
+        <base href="/loja_online/">
+    -->
     <base href="/loja_online/public/">
-
-    <!-- Bootstrap 5.3 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-    <link rel="stylesheet" href="<?= BASE_URL . '/assets/css/site.css' ?>">
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="<?= htmlspecialchars($baseUrl . '/assets/css/site.css', ENT_QUOTES, 'UTF-8') ?>">
 </head>
+
 <body>
+    <!-- ============================================================
+         1. BARRA SUPERIOR
+    =====================   ======================================== -->
+    <?php //require_once APP_ROOT  . '/views/componentes/site/sections/barraSuperior.php'; 
+    ?>
+    <?php View::componente('sections/barraSuperior'); ?>
+    <!-- ============================================================
+         2. MENU PRINCIPAL
+    ============================================================= -->
 
-    
-
-    <!-- Navbar principal -->
-    <?php View::componente('site/header');?>
-
-    <main id="main-content">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    Ajuda central
-                </div>
-            </div>
-        </div>
+    <?php //require_once APP_ROOT  . '/views/componentes/site/header.php'; 
+    ?>
+    <?php //View::componente('header');
+    ?>
+    <?php View::componente('header', ['categorias' => $categorias,]); ?>
+    <main>
         
     </main>
-
-    <!-- Rodapé -->
-     <?php View::componente('site/footer');?>
-   
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- ============================================================
+         9. RODAPÉ
+    ============================================================= -->
+    <?php View::componente('footer'); ?>
+    <?php //require_once __DIR__ . '/../layouts/site/footer.php'; 
+    ?>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

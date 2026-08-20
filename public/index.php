@@ -51,20 +51,16 @@ $rotas = array_merge(
     require $raizProjeto . '/routes/produtos.php',
     require $raizProjeto . '/routes/categorias.php',
     require $raizProjeto . '/routes/ofertas.php',
-    require $raizProjeto . '/routes/ajuda.php',
+    require $raizProjeto . '/routes/ajuda_central.php',
+    require $raizProjeto . '/routes/ajuda_perguntas.php',
+    require $raizProjeto . '/routes/ajuda_rastreio.php',
+    require $raizProjeto . '/routes/ajuda_trocas.php',
+    require $raizProjeto . '/routes/ajuda_contato.php',
     require $raizProjeto . '/routes/busca.php',
-    require $raizProjeto . '/routes/conta.php',
-    require $raizProjeto . '/routes/entrar.php',
-    require $raizProjeto . '/routes/criarconta.php',
-    require $raizProjeto . '/routes/meuspedidos.php',
+    require $raizProjeto . '/routes/cliente_login.php',
+    require $raizProjeto . '/routes/cliente_cadastro.php',
+    require $raizProjeto . '/routes/cliente.php',
     require $raizProjeto . '/routes/carrinho.php',
-    require $raizProjeto . '/routes/centraldeajuda.php',
-    require $raizProjeto . '/routes/perguntasfrequentes.php',
-    require $raizProjeto . '/routes/rastrearpedido.php',
-    require $raizProjeto . '/routes/trocaedevo.php',
-    require $raizProjeto . '/routes/politicasdeentrega.php',
-    require $raizProjeto . '/routes/faleconosco.php',
-   
 );
 /*
 |--------------------------------------------------------------------------
