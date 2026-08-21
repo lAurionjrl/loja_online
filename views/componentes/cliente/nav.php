@@ -53,6 +53,17 @@ $csrfToken =
 
                     <a
                         class="nav-link"
+                        href="<?= BASE_URL ?>/">
+                        <i class="bi bi-globe2 me-1"></i>
+
+                        Site
+                    </a>
+
+                </li>
+                 <li class="nav-item">
+
+                    <a
+                        class="nav-link"
                         href="<?= BASE_URL ?>/cliente">
                         <i class="bi bi-speedometer2 me-1"></i>
 

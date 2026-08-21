@@ -77,9 +77,19 @@ final class CarrinhoController
         */
         $itens =
             $this->carrinhoRepository
-                ->listarItens(
-                    $carrinhoId
-                );
+            ->listarItens(
+                $carrinhoId
+            );
+        /*
+    |--------------------------------------------------------------------------
+    | Quantidade no carrinho
+    |--------------------------------------------------------------------------
+    */
+        $quantidadeCarrinho =
+            $this->carrinhoRepository
+            ->totalUnidades(
+                $carrinhoId
+            );
         /*
         |--------------------------------------------------------------------------
         | 3. Gera ID seguro dos produtos
@@ -139,9 +149,9 @@ final class CarrinhoController
         $quantidadeParcelas = 10;
         $valorParcela =
             $total > 0
-                ? $total
-                    / $quantidadeParcelas
-                : 0.0;
+            ? $total
+            / $quantidadeParcelas
+            : 0.0;
         /*
         |--------------------------------------------------------------------------
         | 8. Categorias do header
@@ -149,7 +159,7 @@ final class CarrinhoController
         */
         $categorias =
             $this->categoriaRepository
-                ->listarAtivas();
+            ->listarAtivas();
         foreach (
             $categorias
             as &$categoria
@@ -174,22 +184,14 @@ final class CarrinhoController
         |--------------------------------------------------------------------------
         */
         $mensagemSucesso =
-            $_SESSION[
-                'carrinho_sucesso'
-            ]
+            $_SESSION['carrinho_sucesso']
             ?? null;
         $mensagemErro =
-            $_SESSION[
-                'carrinho_erro'
-            ]
+            $_SESSION['carrinho_erro']
             ?? null;
         unset(
-            $_SESSION[
-                'carrinho_sucesso'
-            ],
-            $_SESSION[
-                'carrinho_erro'
-            ]
+            $_SESSION['carrinho_sucesso'],
+            $_SESSION['carrinho_erro']
         );
         /*
         |--------------------------------------------------------------------------
@@ -212,7 +214,7 @@ final class CarrinhoController
         if (!is_file($arquivoView)) {
             throw new RuntimeException(
                 'A página do carrinho '
-                . 'não foi encontrada.'
+                    . 'não foi encontrada.'
             );
         }
         require $arquivoView;
@@ -233,18 +235,16 @@ final class CarrinhoController
             isset(
                 $_POST['csrf_token']
             )
-                ? (string)
-                    $_POST['csrf_token']
-                : null;
+            ? (string)
+            $_POST['csrf_token']
+            : null;
         if (
             !CsrfCarrinho::validar(
                 $csrfToken
             )
         ) {
             http_response_code(403);
-            exit(
-                'Solicitação inválida.'
-            );
+            exit('Solicitação inválida.');
         }
         /*
         |--------------------------------------------------------------------------
@@ -287,7 +287,7 @@ final class CarrinhoController
         $quantidade =
             filter_var(
                 $_POST['quantidade']
-                ?? 1,
+                    ?? 1,
                 FILTER_VALIDATE_INT
             );
         if (
@@ -304,10 +304,10 @@ final class CarrinhoController
         */
         $produto =
             $this->produtoRepository
-                ->buscarPorId(
-                    (int)
-                    $produtoId
-                );
+            ->buscarPorId(
+                (int)
+                $produtoId
+            );
         if ($produto === null) {
             $this->falhar(
                 'Produto não encontrado.'
@@ -342,11 +342,11 @@ final class CarrinhoController
         */
         $quantidadeAtual =
             $this->carrinhoRepository
-                ->quantidadeDoProduto(
-                    $carrinhoId,
-                    (int)
-                    $produtoId
-                );
+            ->quantidadeDoProduto(
+                $carrinhoId,
+                (int)
+                $produtoId
+            );
         /*
         |--------------------------------------------------------------------------
         | 9. Nova quantidade
@@ -366,8 +366,8 @@ final class CarrinhoController
         ) {
             $this->falhar(
                 'A quantidade solicitada '
-                . 'é maior que o estoque '
-                . 'disponível.'
+                    . 'é maior que o estoque '
+                    . 'disponível.'
             );
             return;
         }
@@ -378,20 +378,14 @@ final class CarrinhoController
         */
         $precoUnitario =
             isset(
-                $produto[
-                    'preco_oferta'
-                ]
+                $produto['preco_oferta']
             )
             &&
-            $produto[
-                'preco_oferta'
-            ] !== null
-                ? (float)
-                    $produto[
-                        'preco_oferta'
-                    ]
-                : (float)
-                    $produto['preco'];
+            $produto['preco_oferta'] !== null
+            ? (float)
+            $produto['preco_oferta']
+            : (float)
+            $produto['preco'];
         /*
         |--------------------------------------------------------------------------
         | 12. Salva o item
@@ -416,9 +410,7 @@ final class CarrinhoController
         | 14. Mensagem
         |--------------------------------------------------------------------------
         */
-        $_SESSION[
-            'carrinho_sucesso'
-        ] =
+        $_SESSION['carrinho_sucesso'] =
             'Produto adicionado '
             . 'ao carrinho.';
         /*
@@ -428,8 +420,8 @@ final class CarrinhoController
         */
         header(
             'Location: '
-            . BASE_URL
-            . '/carrinho'
+                . BASE_URL
+                . '/carrinho'
         );
         exit;
     }
@@ -449,18 +441,16 @@ final class CarrinhoController
             isset(
                 $_POST['csrf_token']
             )
-                ? (string)
-                    $_POST['csrf_token']
-                : null;
+            ? (string)
+            $_POST['csrf_token']
+            : null;
         if (
             !CsrfCarrinho::validar(
                 $csrfToken
             )
         ) {
             http_response_code(403);
-            exit(
-                'Solicitação inválida.'
-            );
+            exit('Solicitação inválida.');
         }
         /*
         |--------------------------------------------------------------------------
@@ -492,7 +482,7 @@ final class CarrinhoController
         $quantidade =
             filter_var(
                 $_POST['quantidade']
-                ?? null,
+                    ?? null,
                 FILTER_VALIDATE_INT
             );
         if (
@@ -512,10 +502,10 @@ final class CarrinhoController
         */
         $produto =
             $this->produtoRepository
-                ->buscarPorId(
-                    (int)
-                    $produtoId
-                );
+            ->buscarPorId(
+                (int)
+                $produtoId
+            );
         if ($produto === null) {
             $this->falhar(
                 'Produto não encontrado.'
@@ -536,7 +526,7 @@ final class CarrinhoController
         ) {
             $this->falhar(
                 'Quantidade superior '
-                . 'ao estoque disponível.'
+                    . 'ao estoque disponível.'
             );
             return;
         }
@@ -571,9 +561,7 @@ final class CarrinhoController
         | 9. Mensagem
         |--------------------------------------------------------------------------
         */
-        $_SESSION[
-            'carrinho_sucesso'
-        ] =
+        $_SESSION['carrinho_sucesso'] =
             'Quantidade atualizada.';
         /*
         |--------------------------------------------------------------------------
@@ -582,8 +570,8 @@ final class CarrinhoController
         */
         header(
             'Location: '
-            . BASE_URL
-            . '/carrinho'
+                . BASE_URL
+                . '/carrinho'
         );
         exit;
     }
@@ -603,18 +591,16 @@ final class CarrinhoController
             isset(
                 $_POST['csrf_token']
             )
-                ? (string)
-                    $_POST['csrf_token']
-                : null;
+            ? (string)
+            $_POST['csrf_token']
+            : null;
         if (
             !CsrfCarrinho::validar(
                 $csrfToken
             )
         ) {
             http_response_code(403);
-            exit(
-                'Solicitação inválida.'
-            );
+            exit('Solicitação inválida.');
         }
         /*
         |--------------------------------------------------------------------------
@@ -667,9 +653,7 @@ final class CarrinhoController
         | 6. Mensagem
         |--------------------------------------------------------------------------
         */
-        $_SESSION[
-            'carrinho_sucesso'
-        ] =
+        $_SESSION['carrinho_sucesso'] =
             'Produto removido '
             . 'do carrinho.';
         /*
@@ -679,8 +663,8 @@ final class CarrinhoController
         */
         header(
             'Location: '
-            . BASE_URL
-            . '/carrinho'
+                . BASE_URL
+                . '/carrinho'
         );
         exit;
     }
@@ -718,10 +702,10 @@ final class CarrinhoController
         */
         return
             $this->carrinhoRepository
-                ->obterOuCriar(
-                    $clienteId,
-                    $tokenSessao
-                );
+            ->obterOuCriar(
+                $clienteId,
+                $tokenSessao
+            );
     }
     /*
     |--------------------------------------------------------------------------
@@ -731,14 +715,12 @@ final class CarrinhoController
     private function falhar(
         string $mensagem
     ): void {
-        $_SESSION[
-            'carrinho_erro'
-        ] =
+        $_SESSION['carrinho_erro'] =
             $mensagem;
         header(
             'Location: '
-            . BASE_URL
-            . '/carrinho'
+                . BASE_URL
+                . '/carrinho'
         );
         exit;
     }

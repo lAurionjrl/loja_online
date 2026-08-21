@@ -4,6 +4,18 @@ declare(strict_types=1);
 $tituloHeader = $tituloHeader ?? 'Loja Online';
 $textoHeader = $textoHeader  ?? 'Produtos selecionados para você.';
 $baseUrl = defined('BASE_URL') ? BASE_URL : '';
+
+$quantidadeCarrinho =
+    isset(
+        $quantidadeCarrinho
+    )
+        ? max(
+            0,
+            (int)
+            $quantidadeCarrinho
+        )
+        : 0;
+
 ?>
 <header class="sticky-top">
     <nav class="navbar navbar-expand-lg bg-white border-bottom shadow-sm" aria-label="Menu principal">
@@ -141,10 +153,42 @@ $baseUrl = defined('BASE_URL') ? BASE_URL : '';
                         </ul>
                     </div>
 
-                    <a class="btn btn-primary text-nowrap" href="carrinho">
+                    <a
+                    
+                        class="
+                            btn
+                            btn-primary
+                            text-nowrap
+                        "
+                        href="<?=
+                            htmlspecialchars(
+                                $baseUrl
+                                . '/carrinho',
+                                ENT_QUOTES,
+                                'UTF-8'
+                            )
+                        ?>"
+                    
+                    >
+
                         Carrinho
-                        <span class="badge text-bg-light ms-1">0</span>
+
+                        <span
+                            class="
+                                badge
+                                text-bg-light
+                                ms-1
+                            "
+                        
+                        >
+                            <?=
+                                $quantidadeCarrinho
+                            ?>
+
+                        </span>
+                        
                     </a>
+
                 </div>
             </div>
         </div>

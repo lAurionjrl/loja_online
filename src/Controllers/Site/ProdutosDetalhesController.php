@@ -5,6 +5,7 @@ use App\Helpers\IdSeguro;
 use App\Repositories\CategoriaRepository;
 use App\Repositories\ProdutoRepository;
 use App\Helpers\CsrfCarrinho;
+use App\Services\CarrinhoService;
 use RuntimeException;
 final class ProdutosDetalhesController
 {

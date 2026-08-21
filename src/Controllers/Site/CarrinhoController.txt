@@ -8,6 +8,7 @@ use App\Helpers\IdSeguro;
 use App\Repositories\CarrinhoRepository;
 use App\Repositories\CategoriaRepository;
 use App\Repositories\ProdutoRepository;
+use App\Services\CarrinhoService;
 use RuntimeException;
 final class CarrinhoController
 {
