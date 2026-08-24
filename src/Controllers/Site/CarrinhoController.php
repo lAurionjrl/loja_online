@@ -1,6 +1,9 @@
 <?php
+
 declare(strict_types=1);
+
 namespace App\Controllers\Site;
+
 use App\Helpers\CarrinhoSessao;
 use App\Helpers\ClienteAuth;
 use App\Helpers\CsrfCarrinho;
@@ -9,6 +12,7 @@ use App\Repositories\CarrinhoRepository;
 use App\Repositories\CategoriaRepository;
 use App\Repositories\ProdutoRepository;
 use RuntimeException;
+
 final class CarrinhoController
 {
     /*
@@ -80,16 +84,20 @@ final class CarrinhoController
             ->listarItens(
                 $carrinhoId
             );
+
         /*
     |--------------------------------------------------------------------------
     | Quantidade no carrinho
     |--------------------------------------------------------------------------
     */
+
         $quantidadeCarrinho =
             $this->carrinhoRepository
             ->totalUnidades(
                 $carrinhoId
             );
+
+
         /*
         |--------------------------------------------------------------------------
         | 3. Gera ID seguro dos produtos
@@ -724,4 +732,6 @@ final class CarrinhoController
         );
         exit;
     }
+
+    
 }

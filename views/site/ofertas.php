@@ -10,6 +10,7 @@ $descricaoPagina = $descricaoPagina
     ?? 'Loja online com produtos, ofertas, atendimento ao cliente e compra segura.';
 $tituloPagina = $tituloPagina   ?? 'Ofertas';
 $descricaoPagina = $descricaoPagina ?? 'Loja online com produtos, ofertas, atendimento ao cliente e compra segura.';
+$quantidadeCarrinho = $quantidadeCarrinho ?? 0;
 $baseUrl = defined('BASE_URL') ? BASE_URL : ''; ?>
 <!doctype html>
 <html lang="pt-BR">
@@ -45,16 +46,7 @@ $baseUrl = defined('BASE_URL') ? BASE_URL : ''; ?>
     <!-- ============================================================
          2. MENU PRINCIPAL
     ============================================================= -->
-    <?php  View::componente(
-    'header',
-    [
-        'categorias' =>
-            $categorias,
-
-        'quantidadeCarrinho' =>
-            $quantidadeCarrinho,
-    ]
-);  ?>
+    <?php View::componente('header', ['categorias' => $categorias, 'quantidadeCarrinho' => $quantidadeCarrinho,]);  ?>
     <main class="py-5">
         <div class="container">
             <!-- Título da página -->
@@ -89,7 +81,7 @@ $baseUrl = defined('BASE_URL') ? BASE_URL : ''; ?>
                         );
                         $precoNormal = (float) $produto['preco'];
                         $desconto = (float) $produto['percentual_oferta'];
-                        $precoOferta = $precoNormal-($precoNormal*$desconto/100);
+                        $precoOferta = $precoNormal - ($precoNormal * $desconto / 100);
                         $estoque = (int) $produto['estoque'];
                         $economia = $precoNormal - $precoOferta;
                         /*

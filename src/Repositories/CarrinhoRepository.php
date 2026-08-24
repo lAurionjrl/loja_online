@@ -1,11 +1,7 @@
 <?php
-
 declare(strict_types=1);
-
 namespace App\Repositories;
-
 use PDO;
-
 final class CarrinhoRepository
 {
     private PDO $pdo;
@@ -357,4 +353,5 @@ final class CarrinhoRepository
         $consulta
             ->fetchColumn();
     }
+
 }

@@ -85,15 +85,14 @@ class ClientePedidosController
         | 6. Localiza a View
         |--------------------------------------------------------------------------
         */
-
-
-         $carrinhoService =
+        
+$carrinhoService =
             new CarrinhoService($pdo);
+
         $quantidadeCarrinho =
             $carrinhoService->quantidade();
 
-
-        $arquivoView =
+$arquivoView =
             $raizProjeto
             . '/views/site/cliente_pedidos.php';
 

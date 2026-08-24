@@ -141,7 +141,14 @@ final class ProdutosDetalhesController
         | 10. View
         |--------------------------------------------------------------------------
         */
-        $arquivoView =
+        
+$carrinhoService =
+            new CarrinhoService($pdo);
+
+        $quantidadeCarrinho =
+            $carrinhoService->quantidade();
+
+$arquivoView =
             $raizProjeto
             . '/views/site/'
             . 'produtos_detalhes.php';

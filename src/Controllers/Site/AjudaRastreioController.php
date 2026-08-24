@@ -85,15 +85,14 @@ class AjudaRastreioController
         | 6. Localiza a View
         |--------------------------------------------------------------------------
         */
-
-
-         $carrinhoService =
+        
+$carrinhoService =
             new CarrinhoService($pdo);
+
         $quantidadeCarrinho =
             $carrinhoService->quantidade();
 
-
-        $arquivoView =
+$arquivoView =
             $raizProjeto
             . '/views/site/ajuda_rastreio.php';
 

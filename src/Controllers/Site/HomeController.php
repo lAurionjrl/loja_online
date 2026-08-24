@@ -77,10 +77,15 @@ class HomeController
         |--------------------------------------------------------------------------
         */
 
+
         $carrinhoService =
             new CarrinhoService($pdo);
+
         $quantidadeCarrinho =
             $carrinhoService->quantidade();
+
+
+
 
         $arquivoView =
             $raizProjeto

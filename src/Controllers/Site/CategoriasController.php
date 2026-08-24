@@ -182,13 +182,14 @@ class CategoriasController
         | 13. Localiza a View
         |--------------------------------------------------------------------------
         */
-
-         $carrinhoService =
+        
+$carrinhoService =
             new CarrinhoService($pdo);
+
         $quantidadeCarrinho =
             $carrinhoService->quantidade();
-            
-        $arquivoView =
+
+$arquivoView =
             APP_ROOT
             . '/views/site/categorias.php';
         if (!is_file($arquivoView)) {

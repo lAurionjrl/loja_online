@@ -8,6 +8,7 @@ $tituloPagina = $tituloPagina
     ?? 'Loja Online';
 $descricaoPagina = $descricaoPagina
     ?? 'Loja online com produtos, ofertas, atendimento ao cliente e compra segura.';
+$quantidadeCarrinho = $quantidadeCarrinho ?? 0;
 $baseUrl = defined('BASE_URL') ? BASE_URL : ''; ?>
 <!doctype html>
 <html lang="pt-BR">
@@ -56,16 +57,7 @@ $baseUrl = defined('BASE_URL') ? BASE_URL : ''; ?>
     ?>
     <?php
 
-     View::componente(
-    'header',
-    [
-        'categorias' =>
-            $categorias,
-
-        'quantidadeCarrinho' =>
-            $quantidadeCarrinho,
-    ]
-);
+    View::componente('header', ['categorias' => $categorias, 'quantidadeCarrinho' => $quantidadeCarrinho,]);
 
     ?>
     <main>
