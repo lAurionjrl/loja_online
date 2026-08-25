@@ -27,7 +27,6 @@ use App\Helpers\View;
          NAV
     ============================================================= -->
     <?php View::componenteCliente('nav'); ?>
-
     <!-- ============================================================
          MAIN
     ============================================================= -->
@@ -43,31 +42,11 @@ use App\Helpers\View;
                         Segurança da Conta
                     </h1>
                     <p class="text-muted mb-0">
-                        Gerencie sua senha e acompanhe informações relacionadas à segurança da sua conta.
+                        Gerencie sua senha e acompanhe informações
+                        relacionadas à segurança da sua conta.
                     </p>
                 </div>
             </div>
-
-            <!-- MENSAGENS DE SUCESSO / ERRO -->
-            <?php if (!empty($mensagemSucesso)): ?>
-                <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
-                    <i class="bi bi-check-circle me-1"></i>
-                    <?= htmlspecialchars((string) $mensagemSucesso) ?>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            <?php endif; ?>
-
-            <?php if (!empty($erros)): ?>
-                <div class="alert alert-danger alert-dismissible fade show mb-4" role="alert">
-                    <ul class="mb-0 ps-3">
-                        <?php foreach ($erros as $erro): ?>
-                            <li><?= htmlspecialchars((string) $erro) ?></li>
-                        <?php endforeach; ?>
-                    </ul>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            <?php endif; ?>
-
             <div class="row g-4">
                 <!-- =================================================
                      COLUNA PRINCIPAL
@@ -85,43 +64,65 @@ use App\Helpers\View;
                         </div>
                         <div class="card-body">
                             <p class="text-muted">
-                                Para manter sua conta protegida, utilize uma senha forte e diferente das utilizadas em outros sites.
+                                Para manter sua conta protegida,
+                                utilize uma senha forte e diferente
+                                das utilizadas em outros sites.
                             </p>
-                            
-                            <!-- FORMULÁRIO ENVIANDO PARA A ROTA OFICIAL -->
-                            <form action="cliente/seguranca/senha/atualizar" method="post">
-                                <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrfToken ?? '') ?>">
-
+                            <form action="#" method="post">
                                 <!-- SENHA ATUAL -->
                                 <div class="mb-3">
-                                    <label for="senhaAtual" class="form-label">Senha atual</label>
+                                    <label for="senhaAtual" class="form-label">
+                                        Senha atual
+                                    </label>
                                     <div class="input-group">
-                                        <span class="input-group-text"><i class="bi bi-lock"></i></span>
-                                        <input type="password" class="form-control" id="senhaAtual" name="senha_atual" placeholder="Digite sua senha atual" autocomplete="current-password" required>
+                                        <span class="input-group-text">
+                                            <i class="bi bi-lock"></i>
+                                        </span>
+                                        <input type="password" class="form-control" id="senhaAtual" name="senha_atual"
+                                            placeholder="Digite sua senha atual" autocomplete="current-password"
+                                            required>
+                                        <button class="btn btn-outline-secondary" type="button">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
                                     </div>
                                 </div>
-
                                 <!-- NOVA SENHA -->
                                 <div class="mb-3">
-                                    <label for="novaSenha" class="form-label">Nova senha</label>
+                                    <label for="novaSenha" class="form-label">
+                                        Nova senha
+                                    </label>
                                     <div class="input-group">
-                                        <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
-                                        <input type="password" class="form-control" id="novaSenha" name="nova_senha" placeholder="Digite uma nova senha" autocomplete="new-password" required>
+                                        <span class="input-group-text">
+                                            <i class="bi bi-lock-fill"></i>
+                                        </span>
+                                        <input type="password" class="form-control" id="novaSenha" name="nova_senha"
+                                            placeholder="Digite uma nova senha" autocomplete="new-password" required>
+                                        <button class="btn btn-outline-secondary" type="button">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
                                     </div>
                                     <div class="form-text">
-                                        Utilize pelo menos 8 caracteres, incluindo letras e números.
+                                        Utilize pelo menos 8 caracteres,
+                                        incluindo letras, números e símbolos.
                                     </div>
                                 </div>
-
                                 <!-- CONFIRMAR SENHA -->
                                 <div class="mb-4">
-                                    <label for="confirmarSenha" class="form-label">Confirmar nova senha</label>
+                                    <label for="confirmarSenha" class="form-label">
+                                        Confirmar nova senha
+                                    </label>
                                     <div class="input-group">
-                                        <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
-                                        <input type="password" class="form-control" id="confirmarSenha" name="confirmar_senha" placeholder="Digite novamente a nova senha" autocomplete="new-password" required>
+                                        <span class="input-group-text">
+                                            <i class="bi bi-lock-fill"></i>
+                                        </span>
+                                        <input type="password" class="form-control" id="confirmarSenha"
+                                            name="confirmar_senha" placeholder="Digite novamente a nova senha"
+                                            autocomplete="new-password" required>
+                                        <button class="btn btn-outline-secondary" type="button">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
                                     </div>
                                 </div>
-
                                 <!-- REQUISITOS -->
                                 <div class="alert alert-light border">
                                     <strong>
@@ -129,13 +130,23 @@ use App\Helpers\View;
                                         Recomendações para sua senha
                                     </strong>
                                     <ul class="mb-0 mt-2">
-                                        <li>Utilize pelo menos 8 caracteres.</li>
-                                        <li>Combine letras maiúsculas e minúsculas.</li>
-                                        <li>Utilize números e caracteres especiais.</li>
-                                        <li>Não utilize seu nome ou CPF.</li>
+                                        <li>
+                                            Utilize pelo menos 8 caracteres.
+                                        </li>
+                                        <li>
+                                            Combine letras maiúsculas e minúsculas.
+                                        </li>
+                                        <li>
+                                            Utilize números.
+                                        </li>
+                                        <li>
+                                            Utilize caracteres especiais.
+                                        </li>
+                                        <li>
+                                            Não utilize seu nome ou CPF.
+                                        </li>
                                     </ul>
                                 </div>
-
                                 <!-- BOTÃO -->
                                 <div class="text-end">
                                     <button type="submit" class="btn btn-primary">
@@ -146,7 +157,6 @@ use App\Helpers\View;
                             </form>
                         </div>
                     </div>
-
                     <!-- =============================================
                          SESSÕES / DISPOSITIVOS
                     ============================================== -->
@@ -158,57 +168,240 @@ use App\Helpers\View;
                             </h2>
                         </div>
                         <div class="card-body">
-                            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+                            <!-- DISPOSITIVO ATUAL -->
+                            <div
+                                class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
                                 <div class="d-flex align-items-center">
                                     <div class="me-3">
-                                        <i class="bi bi-pc-display text-primary" style="font-size: 2rem;"></i>
+                                        <i class="bi bi-pc-display text-primary" style="font-size: 2rem;">
+                                        </i>
                                     </div>
                                     <div>
-                                        <h3 class="h6 fw-bold mb-1">Navegador Atual</h3>
-                                        <p class="text-muted small mb-1">Sessão Ativa</p>
-                                        <span class="badge text-bg-success">Sessão atual</span>
+                                        <h3 class="h6 fw-bold mb-1">
+                                            Windows - Google Chrome
+                                        </h3>
+                                        <p class="text-muted small mb-1">
+                                            Fortaleza - CE
+                                        </p>
+                                        <span class="badge text-bg-success">
+                                            Sessão atual
+                                        </span>
                                     </div>
                                 </div>
-                                <small class="text-muted">Conectado agora</small>
+                                <small class="text-muted">
+                                    Último acesso:
+                                    17/08/2026 às 09:30
+                                </small>
+                            </div>
+                            <hr>
+                            <!-- OUTRO DISPOSITIVO -->
+                            <div
+                                class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+                                <div class="d-flex align-items-center">
+                                    <div class="me-3">
+                                        <i class="bi bi-phone text-primary" style="font-size: 2rem;">
+                                        </i>
+                                    </div>
+                                    <div>
+                                        <h3 class="h6 fw-bold mb-1">
+                                            Android - Google Chrome
+                                        </h3>
+                                        <p class="text-muted small mb-0">
+                                            Fortaleza - CE
+                                        </p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-outline-danger btn-sm">
+                                        <i class="bi bi-box-arrow-right me-1"></i>
+                                        Encerrar sessão
+                                    </button>
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- ENCERRAR TODAS -->
+                            <div
+                                class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+                                <div>
+                                    <strong>
+                                        Não reconhece algum acesso?
+                                    </strong>
+                                    <p class="text-muted small mb-0">
+                                        Encerre as outras sessões e altere
+                                        sua senha imediatamente.
+                                    </p>
+                                </div>
+                                <button type="button" class="btn btn-outline-danger">
+                                    <i class="bi bi-power me-1"></i>
+                                    Encerrar outras sessões
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- =============================================
+                         HISTÓRICO DE ACESSOS
+                    ============================================== -->
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-white py-3">
+                            <h2 class="h5 fw-bold mb-0">
+                                <i class="bi bi-clock-history text-primary me-2"></i>
+                                Últimos Acessos
+                            </h2>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-hover align-middle mb-0">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Data</th>
+                                            <th>Dispositivo</th>
+                                            <th>Localização</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                17/08/2026 09:30
+                                            </td>
+                                            <td>
+                                                <i class="bi bi-pc-display me-1"></i>
+                                                Windows / Chrome
+                                            </td>
+                                            <td>
+                                                Fortaleza - CE
+                                            </td>
+                                            <td>
+                                                <span class="badge text-bg-success">
+                                                    Sucesso
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                16/08/2026 19:42
+                                            </td>
+                                            <td>
+                                                <i class="bi bi-phone me-1"></i>
+                                                Android / Chrome
+                                            </td>
+                                            <td>
+                                                Fortaleza - CE
+                                            </td>
+                                            <td>
+                                                <span class="badge text-bg-success">
+                                                    Sucesso
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                15/08/2026 08:15
+                                            </td>
+                                            <td>
+                                                <i class="bi bi-pc-display me-1"></i>
+                                                Windows / Chrome
+                                            </td>
+                                            <td>
+                                                Fortaleza - CE
+                                            </td>
+                                            <td>
+                                                <span class="badge text-bg-success">
+                                                    Sucesso
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <!-- =================================================
                      COLUNA LATERAL
                 ================================================== -->
                 <aside class="col-12 col-lg-4">
-                    <!-- STATUS DA SEGURANÇA -->
+                    <!-- =============================================
+                         STATUS DA SEGURANÇA
+                    ============================================== -->
                     <div class="card border-0 shadow-sm mb-4">
                         <div class="card-header bg-white py-3">
                             <h2 class="h5 fw-bold mb-0">
                                 <i class="bi bi-shield-check text-success me-2"></i>
-                                Status da Conta
+                                Segurança da Conta
                             </h2>
                         </div>
                         <div class="card-body">
+                            <!-- SENHA -->
                             <div class="d-flex align-items-center mb-3">
                                 <i class="bi bi-check-circle-fill text-success fs-4 me-3"></i>
                                 <div>
-                                    <strong class="d-block">Senha configurada</strong>
-                                    <small class="text-muted">Sua conta possui senha ativa.</small>
+                                    <strong class="d-block">
+                                        Senha configurada
+                                    </strong>
+                                    <small class="text-muted">
+                                        Sua conta possui senha de acesso.
+                                    </small>
                                 </div>
                             </div>
                             <hr>
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-envelope-check-fill text-success fs-4 me-3"></i>
+                            <!-- EMAIL -->
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-check-circle-fill text-success fs-4 me-3"></i>
                                 <div>
-                                    <strong class="d-block">E-mail vinculado</strong>
+                                    <strong class="d-block">
+                                        E-mail verificado
+                                    </strong>
                                     <small class="text-muted">
-                                        <?= htmlspecialchars($cliente['email'] ?? 'E-mail cadastrado') ?>
+                                        joao@email.com
+                                    </small>
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- ÚLTIMO ACESSO -->
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-clock text-primary fs-4 me-3"></i>
+                                <div>
+                                    <strong class="d-block">
+                                        Último acesso
+                                    </strong>
+                                    <small class="text-muted">
+                                        17/08/2026 às 09:30
                                     </small>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- DICAS DE SEGURANÇA -->
+                    <!-- =============================================
+                         VERIFICAÇÃO EM DUAS ETAPAS
+                    ============================================== -->
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-header bg-white py-3">
+                            <h2 class="h5 fw-bold mb-0">
+                                <i class="bi bi-phone text-primary me-2"></i>
+                                Verificação em Duas Etapas
+                            </h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <span class="badge text-bg-secondary">
+                                    Desativada
+                                </span>
+                            </div>
+                            <p class="text-muted small">
+                                Adicione uma camada extra de proteção
+                                à sua conta utilizando uma segunda
+                                etapa de autenticação.
+                            </p>
+                            <button type="button" class="btn btn-outline-primary w-100">
+                                <i class="bi bi-shield-plus me-1"></i>
+                                Ativar verificação
+                            </button>
+                        </div>
+                    </div>
+                    <!-- =============================================
+                         DICAS
+                    ============================================== -->
                     <div class="card border-0 shadow-sm">
                         <div class="card-header bg-white py-3">
                             <h2 class="h5 fw-bold mb-0">
@@ -218,10 +411,21 @@ use App\Helpers\View;
                         </div>
                         <div class="card-body">
                             <ul class="small text-muted ps-3 mb-0">
-                                <li class="mb-2">Nunca compartilhe sua senha com ninguém.</li>
-                                <li class="mb-2">Não utilize a mesma senha em vários sites.</li>
-                                <li class="mb-2">Sempre encerre a sessão em computadores públicos.</li>
-                                <li>Mantenha seu e-mail e telefone atualizados.</li>
+                                <li class="mb-2">
+                                    Nunca compartilhe sua senha.
+                                </li>
+                                <li class="mb-2">
+                                    Não utilize a mesma senha em vários sites.
+                                </li>
+                                <li class="mb-2">
+                                    Sempre encerre a sessão em computadores públicos.
+                                </li>
+                                <li class="mb-2">
+                                    Desconfie de mensagens solicitando sua senha.
+                                </li>
+                                <li>
+                                    Mantenha seu e-mail e telefone atualizados.
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -229,7 +433,6 @@ use App\Helpers\View;
             </div>
         </div>
     </main>
-
     <!-- ============================================================
          FOOTER
     ============================================================= -->
@@ -237,24 +440,37 @@ use App\Helpers\View;
         <div class="container py-4">
             <div class="row align-items-center">
                 <div class="col-12 col-md-6 text-center text-md-start">
-                    <strong>Loja Online</strong>
-                    <p class="small text-white-50 mb-0">Sua loja online com segurança e praticidade.</p>
+                    <strong>
+                        Loja Online
+                    </strong>
+                    <p class="small text-white-50 mb-0">
+                        Sua loja online com segurança e praticidade.
+                    </p>
                 </div>
                 <div class="col-12 col-md-6 text-center text-md-end mt-3 mt-md-0">
-                    <a href="" class="text-white text-decoration-none me-3">Loja</a>
-                    <a href="produtos" class="text-white text-decoration-none me-3">Produtos</a>
-                    <a href="cliente/pedidos" class="text-white text-decoration-none">Meus Pedidos</a>
+                    <a href="" class="text-white text-decoration-none me-3">
+                        Loja
+                    </a>
+                    <a href="produtos" class="text-white text-decoration-none me-3">
+                        Produtos
+                    </a>
+                    <a href="cliente/pedidos" class="text-white text-decoration-none">
+                        Meus Pedidos
+                    </a>
                 </div>
             </div>
             <hr class="border-secondary">
             <div class="text-center">
-                <small class="text-white-50">&copy; 2026 Loja Online. Todos os direitos reservados.</small>
+                <small class="text-white-50">
+                    &copy; 2026 Loja Online.
+                    Todos os direitos reservados.
+                </small>
             </div>
         </div>
     </footer>
-
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+    </script>
 </body>
 
 </html>

@@ -321,193 +321,136 @@ final class ClienteRepository
     }
 
     public function emailExisteParaOutroCliente(
-        string $email,
-        int $clienteId
-    ): bool {
+    string $email,
+    int $clienteId
+): bool {
 
-        $sql = '
-            SELECT id
+    $sql = '
+        SELECT id
 
-            FROM clientes
+        FROM clientes
 
-            WHERE email = :email
-              AND id <> :id
+        WHERE email = :email
+          AND id <> :id
 
-            LIMIT 1
-        ';
-
-
-        $consulta =
-            $this->pdo
-                ->prepare($sql);
+        LIMIT 1
+    ';
 
 
-        $consulta->execute([
-
-            'email' =>
-                strtolower(
-                    trim($email)
-                ),
-
-            'id' =>
-                $clienteId,
-        ]);
+    $consulta =
+        $this->pdo
+            ->prepare($sql);
 
 
-        return
-            $consulta->fetch()
-            !== false;
-    }
+    $consulta->execute([
+
+        'email' =>
+            strtolower(
+                trim($email)
+            ),
+
+        'id' =>
+            $clienteId,
+    ]);
 
 
-    public function cpfExisteParaOutroCliente(
-        string $cpf,
-        int $clienteId
-    ): bool {
-
-        $sql = '
-            SELECT id
-
-            FROM clientes
-
-            WHERE cpf = :cpf
-              AND id <> :id
-
-            LIMIT 1
-        ';
+    return
+        $consulta->fetch()
+        !== false;
+}
 
 
-        $consulta =
-            $this->pdo
-                ->prepare($sql);
+public function cpfExisteParaOutroCliente(
+    string $cpf,
+    int $clienteId
+): bool {
+
+    $sql = '
+        SELECT id
+
+        FROM clientes
+
+        WHERE cpf = :cpf
+          AND id <> :id
+
+        LIMIT 1
+    ';
 
 
-        $consulta->execute([
-
-            'cpf' =>
-                $cpf,
-
-            'id' =>
-                $clienteId,
-        ]);
+    $consulta =
+        $this->pdo
+            ->prepare($sql);
 
 
-        return
-            $consulta->fetch()
-            !== false;
-    }
+    $consulta->execute([
 
-    public function atualizarPerfil(
-        int $clienteId,
-        array $dados
-    ): void {
+        'cpf' =>
+            $cpf,
 
-        $sql = '
-            UPDATE clientes
-
-            SET
-                nome = :nome,
-                cpf = :cpf,
-                data_nascimento = :data_nascimento,
-                telefone = :telefone,
-                email = :email,
-                atualizado_em = NOW()
-
-            WHERE id = :id
-              AND status = :status
-        ';
+        'id' =>
+            $clienteId,
+    ]);
 
 
-        $consulta =
-            $this->pdo
-                ->prepare($sql);
+    return
+        $consulta->fetch()
+        !== false;
+}
+
+public function atualizarPerfil(
+    int $clienteId,
+    array $dados
+): void {
+
+    $sql = '
+        UPDATE clientes
+
+        SET
+            nome = :nome,
+            cpf = :cpf,
+            data_nascimento = :data_nascimento,
+            telefone = :telefone,
+            email = :email,
+            atualizado_em = NOW()
+
+        WHERE id = :id
+          AND status = :status
+    ';
 
 
-        $consulta->execute([
+    $consulta =
+        $this->pdo
+            ->prepare($sql);
 
-            'nome' =>
-                $dados['nome'],
 
-            'cpf' =>
-                $dados['cpf'],
+    $consulta->execute([
 
-            'data_nascimento' =>
-                $dados[
-                    'data_nascimento'
-                ],
+        'nome' =>
+            $dados['nome'],
 
-            'telefone' =>
-                $dados['telefone'],
+        'cpf' =>
+            $dados['cpf'],
 
-            'email' =>
-                strtolower(
-                    trim(
-                        $dados['email']
-                    )
-                ),
+        'data_nascimento' =>
+            $dados[
+                'data_nascimento'
+            ],
 
-            'id' =>
-                $clienteId,
+        'telefone' =>
+            $dados['telefone'],
 
-            'status' =>
-                'ativo',
-        ]);
-    }
+        'email' =>
+            strtolower(
+                trim(
+                    $dados['email']
+                )
+            ),
 
-    /*
-    |--------------------------------------------------------------------------
-    | MÉTODOS ADICIONADOS PARA ATENDER ÀS 4 TABELAS DO EXERCÍCIO
-    |--------------------------------------------------------------------------
-    */
+        'id' =>
+            $clienteId,
 
-    // TABELA 2: enderecos
-    public function listarEnderecos(int $clienteId): array
-    {
-        $sql = 'SELECT * FROM enderecos WHERE cliente_id = :cliente_id ORDER BY principal DESC, id DESC';
-        $consulta = $this->pdo->prepare($sql);
-        $consulta->execute(['cliente_id' => $clienteId]);
-        
-        return $consulta->fetchAll() ?: [];
-    }
-
-    // TABELA 3: pedidos
-    public function listarPedidos(int $clienteId): array
-    {
-        $sql = 'SELECT * FROM pedidos WHERE cliente_id = :cliente_id ORDER BY criado_em DESC';
-        $consulta = $this->pdo->prepare($sql);
-        $consulta->execute(['cliente_id' => $clienteId]);
-
-        return $consulta->fetchAll() ?: [];
-    }
-
-    public function detalharPedido(int $clienteId, int $pedidoId): ?array
-    {
-        $sql = 'SELECT * FROM pedidos WHERE id = :id AND cliente_id = :cliente_id LIMIT 1';
-        $consulta = $this->pdo->prepare($sql);
-        $consulta->execute(['id' => $pedidoId, 'cliente_id' => $clienteId]);
-        $pedido = $consulta->fetch();
-
-        if (!$pedido || !is_array($pedido)) {
-            return null;
-        }
-
-        // Busca itens do pedido
-        $sqlItens = 'SELECT * FROM pedido_itens WHERE pedido_id = :pedido_id';
-        $consultaItens = $this->pdo->prepare($sqlItens);
-        $consultaItens->execute(['pedido_id' => $pedidoId]);
-        $pedido['itens'] = $consultaItens->fetchAll() ?: [];
-
-        return $pedido;
-    }
-
-    // TABELA 4: carrinhos
-    public function buscarCarrinhoAtivo(int $clienteId): ?array
-    {
-        $sql = "SELECT * FROM carrinhos WHERE cliente_id = :cliente_id AND status = 'aberto' LIMIT 1";
-        $consulta = $this->pdo->prepare($sql);
-        $consulta->execute(['cliente_id' => $clienteId]);
-        $carrinho = $consulta->fetch();
-
-        return is_array($carrinho) ? $carrinho : null;
-    }
+        'status' =>
+            'ativo',
+    ]);
+}
 }
