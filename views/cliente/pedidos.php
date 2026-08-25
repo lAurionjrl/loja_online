@@ -22,18 +22,12 @@ use App\Helpers\View;
 </head>
 
 <body class="bg-light">
-    <!-- ============================================================
-         NAV
-    ============================================================= -->
+    <!-- NAV -->
     <?php View::componenteCliente('nav'); ?>
-    <!-- ============================================================
-         MAIN
-    ============================================================= -->
+
+    <!-- MAIN -->
     <main class="py-5">
         <div class="container">
-            <!-- ====================================================
-                 TÍTULO
-            ===================================================== -->
             <div class="row mb-4">
                 <div class="col-12">
                     <h1 class="h3 fw-bold mb-1">
@@ -41,364 +35,110 @@ use App\Helpers\View;
                         Meus Pedidos
                     </h1>
                     <p class="text-muted mb-0">
-                        Consulte seus pedidos e acompanhe o andamento
-                        das suas compras.
+                        Consulte seus pedidos e acompanhe o andamento das suas compras.
                     </p>
                 </div>
             </div>
-            <!-- ====================================================
-                 FILTROS
-            ===================================================== -->
+
+            <!-- FILTROS -->
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-body">
-                    <div class="row g-3 align-items-end">
-                        <!-- BUSCA -->
+                    <form method="get" action="cliente/pedidos" class="row g-3 align-items-end">
                         <div class="col-12 col-md-5">
-                            <label for="buscarPedido" class="form-label">
-                                Buscar pedido
-                            </label>
+                            <label for="buscarPedido" class="form-label">Buscar pedido</label>
                             <div class="input-group">
-                                <span class="input-group-text">
-                                    <i class="bi bi-search"></i>
-                                </span>
-                                <input type="text" class="form-control" id="buscarPedido"
-                                    placeholder="Número do pedido">
+                                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                                <input type="text" class="form-control" name="busca" id="buscarPedido" placeholder="Número do pedido" value="<?= htmlspecialchars($_GET['busca'] ?? '') ?>">
                             </div>
                         </div>
-                        <!-- STATUS -->
                         <div class="col-12 col-md-4">
-                            <label for="statusPedido" class="form-label">
-                                Status
-                            </label>
-                            <select class="form-select" id="statusPedido">
-                                <option value="">
-                                    Todos os pedidos
-                                </option>
-                                <option value="aguardando">
-                                    Aguardando pagamento
-                                </option>
-                                <option value="pago">
-                                    Pagamento aprovado
-                                </option>
-                                <option value="preparacao">
-                                    Em preparação
-                                </option>
-                                <option value="enviado">
-                                    Enviado
-                                </option>
-                                <option value="entregue">
-                                    Entregue
-                                </option>
-                                <option value="cancelado">
-                                    Cancelado
-                                </option>
+                            <label for="statusPedido" class="form-label">Status</label>
+                            <select class="form-select" name="status" id="statusPedido">
+                                <option value="">Todos os pedidos</option>
+                                <option value="aguardando" <?= ($_GET['status'] ?? '') === 'aguardando' ? 'selected' : '' ?>>Aguardando pagamento</option>
+                                <option value="pago" <?= ($_GET['status'] ?? '') === 'pago' ? 'selected' : '' ?>>Pagamento aprovado</option>
+                                <option value="preparacao" <?= ($_GET['status'] ?? '') === 'preparacao' ? 'selected' : '' ?>>Em preparação</option>
+                                <option value="enviado" <?= ($_GET['status'] ?? '') === 'enviado' ? 'selected' : '' ?>>Enviado</option>
+                                <option value="entregue" <?= ($_GET['status'] ?? '') === 'entregue' ? 'selected' : '' ?>>Entregue</option>
+                                <option value="cancelado" <?= ($_GET['status'] ?? '') === 'cancelado' ? 'selected' : '' ?>>Cancelado</option>
                             </select>
                         </div>
-                        <!-- BOTÃO -->
                         <div class="col-12 col-md-3">
-                            <button type="button" class="btn btn-primary w-100">
-                                <i class="bi bi-funnel me-1"></i>
-                                Filtrar
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="bi bi-funnel me-1"></i> Filtrar
                             </button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
-            <!-- ====================================================
-                 PEDIDO 1
-            ===================================================== -->
-            <div class="card border-0 shadow-sm mb-4">
-                <!-- CABEÇALHO DO PEDIDO -->
-                <div class="card-header bg-white py-3">
-                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
-                        <div>
-                            <h2 class="h5 fw-bold mb-1">
-                                Pedido #000125
-                            </h2>
-                            <small class="text-muted">
-                                Realizado em 15/08/2026 às 14:32
-                            </small>
-                        </div>
-                        <span class="badge text-bg-warning px-3 py-2">
-                            <i class="bi bi-box-seam me-1"></i>
-                            Em preparação
-                        </span>
-                    </div>
+
+            <!-- LISTA DINÂMICA DE PEDIDOS -->
+            <?php if (empty($pedidos)): ?>
+                <div class="alert alert-info border-0 shadow-sm text-center py-4">
+                    <i class="bi bi-info-circle fs-3 d-block mb-2"></i>
+                    Nenhum pedido foi encontrado.
                 </div>
-                <!-- CONTEÚDO -->
-                <div class="card-body">
-                    <!-- PRODUTO -->
-                    <div class="row align-items-center g-3">
-                        <div class="col-4 col-md-2">
-                            <img src="assets/img/produtos/abajur-led.jpg" class="img-fluid rounded border"
-                                alt="Abajur LED Touch">
+            <?php else: ?>
+                <?php foreach ($pedidos as $pedido): ?>
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-header bg-white py-3">
+                            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+                                <div>
+                                    <h2 class="h5 fw-bold mb-1">
+                                        Pedido #<?= str_pad((string)$pedido['id'], 6, '0', STR_PAD_LEFT) ?>
+                                    </h2>
+                                    <small class="text-muted">
+                                        Realizado em <?= date('d/m/Y \à\s H:i', strtotime($pedido['criado_em'])) ?>
+                                    </small>
+                                </div>
+                                <span class="badge text-bg-<?= $pedido['status_cor'] ?? 'secondary' ?> px-3 py-2">
+                                    <?= htmlspecialchars($pedido['status_nome'] ?? $pedido['status']) ?>
+                                </span>
+                            </div>
                         </div>
-                        <div class="col-8 col-md-5">
-                            <h3 class="h6 fw-bold mb-1">
-                                Abajur LED Touch
-                            </h3>
-                            <p class="text-muted small mb-1">
-                                Casa e Decoração
-                            </p>
-                            <small>
-                                Quantidade: 1
-                            </small>
-                        </div>
-                        <div class="col-6 col-md-2">
-                            <small class="text-muted d-block">
-                                Preço
-                            </small>
-                            <strong>
-                                R$ 119,90
-                            </strong>
-                        </div>
-                        <div class="col-6 col-md-3 text-md-end">
-                            <a href="cliente/pedido?id=125" class="btn btn-outline-primary">
-                                <i class="bi bi-eye me-1"></i>
-                                Ver pedido
-                            </a>
-                        </div>
-                    </div>
-                    <hr>
-                    <!-- RESUMO -->
-                    <div class="row">
-                        <div class="col-12 col-md-6">
-                            <small class="text-muted d-block">
-                                Forma de pagamento
-                            </small>
-                            <strong>
-                                Cartão de crédito
-                            </strong>
-                        </div>
-                        <div class="col-12 col-md-6 text-md-end mt-3 mt-md-0">
-                            <small class="text-muted d-block">
-                                Total do pedido
-                            </small>
-                            <span class="fs-5 fw-bold text-success">
-                                R$ 119,90
-                            </span>
+                        <div class="card-body">
+                            <div class="row align-items-center g-3">
+                                <div class="col-12 col-md-8">
+                                    <p class="mb-1"><strong>Itens:</strong> <?= htmlspecialchars((string)($pedido['total_itens'] ?? 1)) ?> item(ns)</p>
+                                    <p class="mb-0 text-muted small">Pagamento via: <?= htmlspecialchars($pedido['forma_pagamento'] ?? 'Cartão/PIX') ?></p>
+                                </div>
+                                <div class="col-12 col-md-4 text-md-end">
+                                    <small class="text-muted d-block">Total do pedido</small>
+                                    <span class="fs-5 fw-bold text-success me-3">
+                                        R$ <?= number_format((float)$pedido['valor_total'], 2, ',', '.') ?>
+                                    </span>
+                                    <a href="cliente/pedido?id=<?= $pedido['id'] ?>" class="btn btn-outline-primary btn-sm mt-2 mt-md-0">
+                                        <i class="bi bi-eye me-1"></i> Ver pedido
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <!-- ====================================================
-                 PEDIDO 2
-            ===================================================== -->
-            <div class="card border-0 shadow-sm mb-4">
-                <div class="card-header bg-white py-3">
-                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
-                        <div>
-                            <h2 class="h5 fw-bold mb-1">
-                                Pedido #000124
-                            </h2>
-                            <small class="text-muted">
-                                Realizado em 10/08/2026 às 09:15
-                            </small>
-                        </div>
-                        <span class="badge text-bg-primary px-3 py-2">
-                            <i class="bi bi-truck me-1"></i>
-                            Enviado
-                        </span>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="row align-items-center g-3">
-                        <div class="col-4 col-md-2">
-                            <img src="assets/img/produtos/fone.jpg" class="img-fluid rounded border"
-                                alt="Fone Bluetooth">
-                        </div>
-                        <div class="col-8 col-md-5">
-                            <h3 class="h6 fw-bold mb-1">
-                                Fone Bluetooth
-                            </h3>
-                            <p class="text-muted small mb-1">
-                                Eletrônicos
-                            </p>
-                            <small>
-                                Quantidade: 1
-                            </small>
-                        </div>
-                        <div class="col-6 col-md-2">
-                            <small class="text-muted d-block">
-                                Preço
-                            </small>
-                            <strong>
-                                R$ 199,90
-                            </strong>
-                        </div>
-                        <div class="col-6 col-md-3 text-md-end">
-                            <a href="cliente/pedido?id=124" class="btn btn-outline-primary">
-                                <i class="bi bi-eye me-1"></i>
-                                Ver pedido
-                            </a>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-12 col-md-6">
-                            <small class="text-muted d-block">
-                                Forma de pagamento
-                            </small>
-                            <strong>
-                                PIX
-                            </strong>
-                        </div>
-                        <div class="col-12 col-md-6 text-md-end mt-3 mt-md-0">
-                            <small class="text-muted d-block">
-                                Total do pedido
-                            </small>
-                            <span class="fs-5 fw-bold text-success">
-                                R$ 199,90
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ====================================================
-                 PEDIDO 3
-            ===================================================== -->
-            <div class="card border-0 shadow-sm mb-4">
-                <div class="card-header bg-white py-3">
-                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
-                        <div>
-                            <h2 class="h5 fw-bold mb-1">
-                                Pedido #000123
-                            </h2>
-                            <small class="text-muted">
-                                Realizado em 02/08/2026 às 18:45
-                            </small>
-                        </div>
-                        <span class="badge text-bg-success px-3 py-2">
-                            <i class="bi bi-check-circle me-1"></i>
-                            Entregue
-                        </span>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="row align-items-center g-3">
-                        <div class="col-4 col-md-2">
-                            <img src="assets/img/produtos/mouse.jpg" class="img-fluid rounded border"
-                                alt="Mouse Sem Fio">
-                        </div>
-                        <div class="col-8 col-md-5">
-                            <h3 class="h6 fw-bold mb-1">
-                                Mouse Sem Fio
-                            </h3>
-                            <p class="text-muted small mb-1">
-                                Informática
-                            </p>
-                            <small>
-                                Quantidade: 2
-                            </small>
-                        </div>
-                        <div class="col-6 col-md-2">
-                            <small class="text-muted d-block">
-                                Preço unitário
-                            </small>
-                            <strong>
-                                R$ 89,90
-                            </strong>
-                        </div>
-                        <div class="col-6 col-md-3 text-md-end">
-                            <a href="cliente/pedido?id=123" class="btn btn-outline-primary">
-                                <i class="bi bi-eye me-1"></i>
-                                Ver pedido
-                            </a>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-12 col-md-6">
-                            <small class="text-muted d-block">
-                                Forma de pagamento
-                            </small>
-                            <strong>
-                                Cartão de crédito
-                            </strong>
-                        </div>
-                        <div class="col-12 col-md-6 text-md-end mt-3 mt-md-0">
-                            <small class="text-muted d-block">
-                                Total do pedido
-                            </small>
-                            <span class="fs-5 fw-bold text-success">
-                                R$ 179,80
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ====================================================
-                 PAGINAÇÃO
-            ===================================================== -->
-            <nav aria-label="Navegação dos pedidos" class="mt-4">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#">
-                            Anterior
-                        </a>
-                    </li>
-                    <li class="page-item active">
-                        <a class="page-link" href="#">
-                            1
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">
-                            2
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">
-                            3
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">
-                            Próxima
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
     </main>
-    <!-- ============================================================
-         FOOTER
-    ============================================================= -->
+
+    <!-- FOOTER -->
     <footer class="bg-dark text-white mt-5">
         <div class="container py-4">
             <div class="row align-items-center">
                 <div class="col-12 col-md-6 text-center text-md-start">
-                    <strong>
-                        Loja Online
-                    </strong>
-                    <p class="small text-white-50 mb-0">
-                        Sua loja online com segurança e praticidade.
-                    </p>
+                    <strong>Loja Online</strong>
+                    <p class="small text-white-50 mb-0">Sua loja online com segurança e praticidade.</p>
                 </div>
                 <div class="col-12 col-md-6 text-center text-md-end mt-3 mt-md-0">
-                    <a href="" class="text-white text-decoration-none me-3">
-                        Loja
-                    </a>
-                    <a href="produtos" class="text-white text-decoration-none me-3">
-                        Produtos
-                    </a>
-                    <a href="cliente/pedidos" class="text-white text-decoration-none">
-                        Meus Pedidos
-                    </a>
+                    <a href="" class="text-white text-decoration-none me-3">Loja</a>
+                    <a href="produtos" class="text-white text-decoration-none me-3">Produtos</a>
+                    <a href="cliente/pedidos" class="text-white text-decoration-none">Meus Pedidos</a>
                 </div>
             </div>
             <hr class="border-secondary">
             <div class="text-center">
-                <small class="text-white-50">
-                    &copy; 2026 Loja Online.
-                    Todos os direitos reservados.
-                </small>
+                <small class="text-white-50">&copy; 2026 Loja Online. Todos os direitos reservados.</small>
             </div>
         </div>
     </footer>
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
