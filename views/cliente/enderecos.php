@@ -10,26 +10,16 @@ use App\Helpers\View;
 
 <head>
     <meta charset="utf-8">
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1">
-    <meta
-        name="description"
-        content="Gerenciamento de endereços do cliente da Loja Online.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Gerenciamento de endereços do cliente da Loja Online.">
     <title>Meus Endereços | Loja Online</title>
     <base href="/loja_online/public/">
     <!-- Bootstrap -->
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
-    <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <!-- CSS do projeto -->
-    <link
-        rel="stylesheet"
-        href="assets/css/site.css">
+    <link rel="stylesheet" href="assets/css/site.css">
 </head>
 
 <body class="bg-light">
@@ -37,6 +27,7 @@ use App\Helpers\View;
          NAV
     ============================================================= -->
     <?php View::componenteCliente('nav'); ?>
+
     <!-- ============================================================
          MAIN
     ============================================================= -->
@@ -45,249 +36,146 @@ use App\Helpers\View;
             <!-- ====================================================
                  CABEÇALHO
             ===================================================== -->
-            <div
-                class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
                 <div>
                     <h1 class="h3 fw-bold mb-1">
                         <i class="bi bi-geo-alt text-primary me-2"></i>
                         Meus Endereços
                     </h1>
                     <p class="text-muted mb-0">
-                        Gerencie os endereços utilizados para entrega
-                        dos seus pedidos.
+                        Gerencie os endereços utilizados para entrega dos seus pedidos.
                     </p>
                 </div>
-                <button
-                    type="button"
-                    class="btn btn-primary"
-                    data-bs-toggle="modal"
-                    data-bs-target="#modalNovoEndereco">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNovoEndereco">
                     <i class="bi bi-plus-lg me-1"></i>
                     Novo endereço
                 </button>
             </div>
+
+            <!-- MENSAGENS DE SUCESSO / ERRO -->
+            <?php if (!empty($mensagemSucesso)): ?>
+                <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
+                    <i class="bi bi-check-circle me-1"></i>
+                    <?= htmlspecialchars((string) $mensagemSucesso) ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php endif; ?>
+
+            <?php if (!empty($erros)): ?>
+                <div class="alert alert-danger alert-dismissible fade show mb-4" role="alert">
+                    <ul class="mb-0 ps-3">
+                        <?php foreach ($erros as $erro): ?>
+                            <li><?= htmlspecialchars((string) $erro) ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php endif; ?>
+
             <!-- ====================================================
-                 ENDEREÇOS CADASTRADOS
+                 ENDEREÇOS CADASTRADOS (DINÂMICOS)
             ===================================================== -->
             <div class="row g-4">
-                <!-- =================================================
-                     ENDEREÇO 1
-                ================================================== -->
-                <div class="col-12 col-lg-6">
-                    <div class="card border-primary shadow-sm h-100">
-                        <div class="card-header bg-white">
-                            <div
-                                class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <i class="bi bi-house-door-fill text-primary me-1"></i>
-                                    <strong>
-                                        Minha Casa
-                                    </strong>
+                <?php if (empty($enderecos)): ?>
+                    <div class="col-12">
+                        <div class="alert alert-info text-center py-4 mb-0">
+                            <i class="bi bi-info-circle fs-3 d-block mb-2"></i>
+                            Você ainda não possui nenhum endereço cadastrado.
+                        </div>
+                    </div>
+                <?php else: ?>
+                    <?php foreach ($enderecos as $endereco): ?>
+                        <div class="col-12 col-lg-6">
+                            <div class="card <?= !empty($endereco['principal']) ? 'border-primary' : 'border-0' ?> shadow-sm h-100">
+                                <div class="card-header bg-white">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <i class="bi bi-house-door-fill text-primary me-1"></i>
+                                            <strong>
+                                                <?= htmlspecialchars($endereco['apelido'] ?? 'Endereço') ?>
+                                            </strong>
+                                        </div>
+                                        <?php if (!empty($endereco['principal'])): ?>
+                                            <span class="badge text-bg-primary">
+                                                Principal
+                                            </span>
+                                        <?php endif; ?>
+                                    </div>
                                 </div>
-                                <span class="badge text-bg-primary">
-                                    Principal
-                                </span>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <h2 class="h6 fw-bold">
-                                João da Silva
-                            </h2>
-                            <p class="mb-1">
-                                Rua das Flores, 125
-                            </p>
-                            <p class="mb-1">
-                                Apartamento 302
-                            </p>
-                            <p class="mb-1">
-                                Centro
-                            </p>
-                            <p class="mb-1">
-                                Fortaleza - CE
-                            </p>
-                            <p class="mb-3">
-                                CEP: 60000-000
-                            </p>
-                            <div class="border-top pt-3">
-                                <small class="text-muted">
-                                    <i class="bi bi-telephone me-1"></i>
-                                    (85) 99999-9999
-                                </small>
-                            </div>
-                        </div>
-                        <div class="card-footer bg-white">
-                            <div class="d-flex gap-2">
-                                <button
-                                    type="button"
-                                    class="btn btn-outline-primary btn-sm">
-                                    <i class="bi bi-pencil-square me-1"></i>
-                                    Editar
-                                </button>
-                                <button
-                                    type="button"
-                                    class="btn btn-outline-danger btn-sm">
-                                    <i class="bi bi-trash me-1"></i>
-                                    Excluir
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- =================================================
-                     ENDEREÇO 2
-                ================================================== -->
-                <div class="col-12 col-lg-6">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-header bg-white">
-                            <div
-                                class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <i class="bi bi-building text-primary me-1"></i>
-                                    <strong>
-                                        Trabalho
-                                    </strong>
+                                <div class="card-body">
+                                    <h2 class="h6 fw-bold">
+                                        <?= htmlspecialchars($endereco['destinatario'] ?? '') ?>
+                                    </h2>
+                                    <p class="mb-1">
+                                        <?= htmlspecialchars($endereco['logradouro'] ?? '') ?>, <?= htmlspecialchars((string) ($endereco['numero'] ?? '')) ?>
+                                    </p>
+                                    <?php if (!empty($endereco['complemento'])): ?>
+                                        <p class="mb-1">
+                                            <?= htmlspecialchars($endereco['complemento']) ?>
+                                        </p>
+                                    <?php endif; ?>
+                                    <p class="mb-1">
+                                        <?= htmlspecialchars($endereco['bairro'] ?? '') ?>
+                                    </p>
+                                    <p class="mb-1">
+                                        <?= htmlspecialchars($endereco['cidade'] ?? '') ?> - <?= htmlspecialchars($endereco['estado'] ?? '') ?>
+                                    </p>
+                                    <p class="mb-3">
+                                        CEP: <?= htmlspecialchars($endereco['cep'] ?? '') ?>
+                                    </p>
+                                    <?php if (!empty($endereco['telefone'])): ?>
+                                        <div class="border-top pt-3">
+                                            <small class="text-muted">
+                                                <i class="bi bi-telephone me-1"></i>
+                                                <?= htmlspecialchars($endereco['telefone']) ?>
+                                            </small>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="card-footer bg-white">
+                                    <div class="d-flex flex-wrap gap-2">
+                                        <!-- Tornar Principal -->
+                                        <?php if (empty($endereco['principal'])): ?>
+                                            <form action="cliente/enderecos/principal" method="post" class="d-inline">
+                                                <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrfToken ?? '') ?>">
+                                                <input type="hidden" name="id_seguro" value="<?= htmlspecialchars($endereco['id_seguro'] ?? '') ?>">
+                                                <button type="submit" class="btn btn-outline-success btn-sm">
+                                                    <i class="bi bi-check-circle me-1"></i>
+                                                    Tornar principal
+                                                </button>
+                                            </form>
+                                        <?php endif; ?>
+
+                                        <!-- Excluir -->
+                                        <form action="cliente/enderecos/excluir" method="post" class="d-inline" onsubmit="return confirm('Tem certeza que deseja excluir este endereço?');">
+                                            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrfToken ?? '') ?>">
+                                            <input type="hidden" name="id_seguro" value="<?= htmlspecialchars($endereco['id_seguro'] ?? '') ?>">
+                                            <button type="submit" class="btn btn-outline-danger btn-sm">
+                                                <i class="bi bi-trash me-1"></i>
+                                                Excluir
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <h2 class="h6 fw-bold">
-                                João da Silva
-                            </h2>
-                            <p class="mb-1">
-                                Avenida Santos Dumont, 1500
-                            </p>
-                            <p class="mb-1">
-                                Sala 405
-                            </p>
-                            <p class="mb-1">
-                                Aldeota
-                            </p>
-                            <p class="mb-1">
-                                Fortaleza - CE
-                            </p>
-                            <p class="mb-3">
-                                CEP: 60150-161
-                            </p>
-                            <div class="border-top pt-3">
-                                <small class="text-muted">
-                                    <i class="bi bi-telephone me-1"></i>
-                                    (85) 98888-7777
-                                </small>
-                            </div>
-                        </div>
-                        <div class="card-footer bg-white">
-                            <div
-                                class="d-flex flex-wrap gap-2">
-                                <button
-                                    type="button"
-                                    class="btn btn-outline-primary btn-sm">
-                                    <i class="bi bi-pencil-square me-1"></i>
-                                    Editar
-                                </button>
-                                <button
-                                    type="button"
-                                    class="btn btn-outline-success btn-sm">
-                                    <i class="bi bi-check-circle me-1"></i>
-                                    Tornar principal
-                                </button>
-                                <button
-                                    type="button"
-                                    class="btn btn-outline-danger btn-sm">
-                                    <i class="bi bi-trash me-1"></i>
-                                    Excluir
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- =================================================
-                     ENDEREÇO 3
-                ================================================== -->
-                <div class="col-12 col-lg-6">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-header bg-white">
-                            <div>
-                                <i class="bi bi-geo-alt-fill text-primary me-1"></i>
-                                <strong>
-                                    Casa dos Pais
-                                </strong>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <h2 class="h6 fw-bold">
-                                Maria da Silva
-                            </h2>
-                            <p class="mb-1">
-                                Rua São José, 750
-                            </p>
-                            <p class="mb-1">
-                                Casa
-                            </p>
-                            <p class="mb-1">
-                                Messejana
-                            </p>
-                            <p class="mb-1">
-                                Fortaleza - CE
-                            </p>
-                            <p class="mb-3">
-                                CEP: 60840-000
-                            </p>
-                            <div class="border-top pt-3">
-                                <small class="text-muted">
-                                    <i class="bi bi-telephone me-1"></i>
-                                    (85) 97777-6666
-                                </small>
-                            </div>
-                        </div>
-                        <div class="card-footer bg-white">
-                            <div
-                                class="d-flex flex-wrap gap-2">
-                                <button
-                                    type="button"
-                                    class="btn btn-outline-primary btn-sm">
-                                    <i class="bi bi-pencil-square me-1"></i>
-                                    Editar
-                                </button>
-                                <button
-                                    type="button"
-                                    class="btn btn-outline-success btn-sm">
-                                    <i class="bi bi-check-circle me-1"></i>
-                                    Tornar principal
-                                </button>
-                                <button
-                                    type="button"
-                                    class="btn btn-outline-danger btn-sm">
-                                    <i class="bi bi-trash me-1"></i>
-                                    Excluir
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+
                 <!-- =================================================
                      CARD ADICIONAR ENDEREÇO
                 ================================================== -->
                 <div class="col-12 col-lg-6">
-                    <div
-                        class="card border border-2 border-dashed h-100">
-                        <div
-                            class="card-body d-flex flex-column align-items-center justify-content-center text-center py-5">
-                            <i
-                                class="bi bi-plus-circle text-primary mb-3"
-                                style="font-size: 3rem;">
-                            </i>
+                    <div class="card border border-2 border-dashed h-100">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center text-center py-5">
+                            <i class="bi bi-plus-circle text-primary mb-3" style="font-size: 3rem;"></i>
                             <h2 class="h5 fw-bold">
                                 Adicionar outro endereço
                             </h2>
                             <p class="text-muted">
-                                Cadastre um novo endereço para receber
-                                suas compras.
+                                Cadastre um novo endereço para receber suas compras.
                             </p>
-                            <button
-                                type="button"
-                                class="btn btn-outline-primary"
-                                data-bs-toggle="modal"
-                                data-bs-target="#modalNovoEndereco">
+                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalNovoEndereco">
                                 <i class="bi bi-plus-lg me-1"></i>
                                 Cadastrar endereço
                             </button>
@@ -297,252 +185,93 @@ use App\Helpers\View;
             </div>
         </div>
     </main>
+
     <!-- ============================================================
          MODAL - NOVO ENDEREÇO
     ============================================================= -->
-    <div
-        class="modal fade"
-        id="modalNovoEndereco"
-        tabindex="-1"
-        aria-labelledby="modalNovoEnderecoLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="modalNovoEndereco" tabindex="-1" aria-labelledby="modalNovoEnderecoLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
-                <!-- CABEÇALHO -->
                 <div class="modal-header">
-                    <h2
-                        class="modal-title fs-5"
-                        id="modalNovoEnderecoLabel">
+                    <h2 class="modal-title fs-5" id="modalNovoEnderecoLabel">
                         <i class="bi bi-geo-alt text-primary me-2"></i>
                         Novo Endereço
                     </h2>
-                    <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Fechar">
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
                 </div>
-                <!-- FORMULÁRIO -->
-                <form action="#" method="post">
+                <!-- FORMULÁRIO ENVIANDO PARA A ROTA DA APLICAÇÃO -->
+                <form action="cliente/enderecos/salvar" method="post">
+                    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrfToken ?? '') ?>">
                     <div class="modal-body">
                         <div class="row g-3">
-                            <!-- IDENTIFICAÇÃO -->
                             <div class="col-12">
-                                <label
-                                    for="apelido"
-                                    class="form-label">
-                                    Identificação do endereço
-                                </label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="apelido"
-                                    name="apelido"
-                                    placeholder="Ex.: Minha Casa, Trabalho">
+                                <label for="apelido" class="form-label">Identificação do endereço</label>
+                                <input type="text" class="form-control" id="apelido" name="apelido" placeholder="Ex.: Minha Casa, Trabalho">
                             </div>
-                            <!-- DESTINATÁRIO -->
                             <div class="col-12">
-                                <label
-                                    for="destinatario"
-                                    class="form-label">
-                                    Nome do destinatário
-                                </label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="destinatario"
-                                    name="destinatario"
-                                    placeholder="Nome completo"
-                                    required>
+                                <label for="destinatario" class="form-label">Nome do destinatário</label>
+                                <input type="text" class="form-control" id="destinatario" name="destinatario" placeholder="Nome completo" required>
                             </div>
-                            <!-- CEP -->
                             <div class="col-12 col-md-4">
-                                <label
-                                    for="cep"
-                                    class="form-label">
-                                    CEP
-                                </label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="cep"
-                                    name="cep"
-                                    placeholder="00000-000"
-                                    required>
+                                <label for="cep" class="form-label">CEP</label>
+                                <input type="text" class="form-control" id="cep" name="cep" placeholder="00000-000" required>
                             </div>
-                            <!-- RUA -->
                             <div class="col-12 col-md-8">
-                                <label
-                                    for="logradouro"
-                                    class="form-label">
-                                    Rua / Avenida
-                                </label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="logradouro"
-                                    name="logradouro"
-                                    placeholder="Nome da rua ou avenida"
-                                    required>
+                                <label for="logradouro" class="form-label">Rua / Avenida</label>
+                                <input type="text" class="form-control" id="logradouro" name="logradouro" placeholder="Nome da rua ou avenida" required>
                             </div>
-                            <!-- NÚMERO -->
                             <div class="col-12 col-md-4">
-                                <label
-                                    for="numero"
-                                    class="form-label">
-                                    Número
-                                </label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="numero"
-                                    name="numero"
-                                    required>
+                                <label for="numero" class="form-label">Número</label>
+                                <input type="text" class="form-control" id="numero" name="numero" required>
                             </div>
-                            <!-- COMPLEMENTO -->
                             <div class="col-12 col-md-8">
-                                <label
-                                    for="complemento"
-                                    class="form-label">
-                                    Complemento
-                                </label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="complemento"
-                                    name="complemento"
-                                    placeholder="Apartamento, bloco, sala...">
+                                <label for="complemento" class="form-label">Complemento</label>
+                                <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Apartamento, bloco, sala...">
                             </div>
-                            <!-- BAIRRO -->
                             <div class="col-12 col-md-6">
-                                <label
-                                    for="bairro"
-                                    class="form-label">
-                                    Bairro
-                                </label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="bairro"
-                                    name="bairro"
-                                    required>
+                                <label for="bairro" class="form-label">Bairro</label>
+                                <input type="text" class="form-control" id="bairro" name="bairro" required>
                             </div>
-                            <!-- CIDADE -->
                             <div class="col-12 col-md-6">
-                                <label
-                                    for="cidade"
-                                    class="form-label">
-                                    Cidade
-                                </label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="cidade"
-                                    name="cidade"
-                                    required>
+                                <label for="cidade" class="form-label">Cidade</label>
+                                <input type="text" class="form-control" id="cidade" name="cidade" required>
                             </div>
-                            <!-- ESTADO -->
                             <div class="col-12 col-md-4">
-                                <label
-                                    for="estado"
-                                    class="form-label">
-                                    Estado
-                                </label>
-                                <select
-                                    class="form-select"
-                                    id="estado"
-                                    name="estado"
-                                    required>
-                                    <option value="">
-                                        Selecione
-                                    </option>
-                                    <option value="AC">AC</option>
-                                    <option value="AL">AL</option>
-                                    <option value="AP">AP</option>
-                                    <option value="AM">AM</option>
-                                    <option value="BA">BA</option>
-                                    <option value="CE">CE</option>
-                                    <option value="DF">DF</option>
-                                    <option value="ES">ES</option>
-                                    <option value="GO">GO</option>
-                                    <option value="MA">MA</option>
-                                    <option value="MT">MT</option>
-                                    <option value="MS">MS</option>
-                                    <option value="MG">MG</option>
-                                    <option value="PA">PA</option>
-                                    <option value="PB">PB</option>
-                                    <option value="PR">PR</option>
-                                    <option value="PE">PE</option>
-                                    <option value="PI">PI</option>
-                                    <option value="RJ">RJ</option>
-                                    <option value="RN">RN</option>
-                                    <option value="RS">RS</option>
-                                    <option value="RO">RO</option>
-                                    <option value="RR">RR</option>
-                                    <option value="SC">SC</option>
-                                    <option value="SP">SP</option>
-                                    <option value="SE">SE</option>
-                                    <option value="TO">TO</option>
+                                <label for="estado" class="form-label">Estado</label>
+                                <select class="form-select" id="estado" name="estado" required>
+                                    <option value="">Selecione</option>
+                                    <option value="AC">AC</option><option value="AL">AL</option><option value="AP">AP</option>
+                                    <option value="AM">AM</option><option value="BA">BA</option><option value="CE">CE</option>
+                                    <option value="DF">DF</option><option value="ES">ES</option><option value="GO">GO</option>
+                                    <option value="MA">MA</option><option value="MT">MT</option><option value="MS">MS</option>
+                                    <option value="MG">MG</option><option value="PA">PA</option><option value="PB">PB</option>
+                                    <option value="PR">PR</option><option value="PE">PE</option><option value="PI">PI</option>
+                                    <option value="RJ">RJ</option><option value="RN">RN</option><option value="RS">RS</option>
+                                    <option value="RO">RO</option><option value="RR">RR</option><option value="SC">SC</option>
+                                    <option value="SP">SP</option><option value="SE">SE</option><option value="TO">TO</option>
                                 </select>
                             </div>
-                            <!-- TELEFONE -->
                             <div class="col-12 col-md-8">
-                                <label
-                                    for="telefone"
-                                    class="form-label">
-                                    Telefone para contato
-                                </label>
-                                <input
-                                    type="tel"
-                                    class="form-control"
-                                    id="telefone"
-                                    name="telefone"
-                                    placeholder="(00) 00000-0000">
+                                <label for="telefone" class="form-label">Telefone para contato</label>
+                                <input type="tel" class="form-control" id="telefone" name="telefone" placeholder="(00) 00000-0000">
                             </div>
-                            <!-- REFERÊNCIA -->
                             <div class="col-12">
-                                <label
-                                    for="referencia"
-                                    class="form-label">
-                                    Ponto de referência
-                                </label>
-                                <textarea
-                                    class="form-control"
-                                    id="referencia"
-                                    name="referencia"
-                                    rows="2"
-                                    placeholder="Ex.: Próximo ao supermercado">
-                                </textarea>
+                                <label for="referencia" class="form-label">Ponto de referência</label>
+                                <textarea class="form-control" id="referencia" name="referencia" rows="2" placeholder="Ex.: Próximo ao supermercado"></textarea>
                             </div>
-                            <!-- PRINCIPAL -->
                             <div class="col-12">
                                 <div class="form-check">
-                                    <input
-                                        class="form-check-input"
-                                        type="checkbox"
-                                        id="principal"
-                                        name="principal">
-                                    <label
-                                        class="form-check-label"
-                                        for="principal">
+                                    <input class="form-check-input" type="checkbox" id="principal" name="principal" value="1">
+                                    <label class="form-check-label" for="principal">
                                         Definir como meu endereço principal
                                     </label>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- BOTÕES -->
                     <div class="modal-footer">
-                        <button
-                            type="button"
-                            class="btn btn-secondary"
-                            data-bs-dismiss="modal">
-                            Cancelar
-                        </button>
-                        <button
-                            type="submit"
-                            class="btn btn-primary">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">
                             <i class="bi bi-check-lg me-1"></i>
                             Salvar endereço
                         </button>
@@ -551,6 +280,7 @@ use App\Helpers\View;
             </div>
         </div>
     </div>
+
     <!-- ============================================================
          FOOTER
     ============================================================= -->
@@ -558,45 +288,24 @@ use App\Helpers\View;
         <div class="container py-4">
             <div class="row align-items-center">
                 <div class="col-12 col-md-6 text-center text-md-start">
-                    <strong>
-                        Loja Online
-                    </strong>
-                    <p class="small text-white-50 mb-0">
-                        Sua loja online com segurança e praticidade.
-                    </p>
+                    <strong>Loja Online</strong>
+                    <p class="small text-white-50 mb-0">Sua loja online com segurança e praticidade.</p>
                 </div>
-                <div
-                    class="col-12 col-md-6 text-center text-md-end mt-3 mt-md-0">
-                    <a
-                        href=""
-                        class="text-white text-decoration-none me-3">
-                        Loja
-                    </a>
-                    <a
-                        href="produtos"
-                        class="text-white text-decoration-none me-3">
-                        Produtos
-                    </a>
-                    <a
-                        href="cliente/pedidos"
-                        class="text-white text-decoration-none">
-                        Meus Pedidos
-                    </a>
+                <div class="col-12 col-md-6 text-center text-md-end mt-3 mt-md-0">
+                    <a href="" class="text-white text-decoration-none me-3">Loja</a>
+                    <a href="produtos" class="text-white text-decoration-none me-3">Produtos</a>
+                    <a href="cliente/pedidos" class="text-white text-decoration-none">Meus Pedidos</a>
                 </div>
             </div>
             <hr class="border-secondary">
             <div class="text-center">
-                <small class="text-white-50">
-                    &copy; 2026 Loja Online.
-                    Todos os direitos reservados.
-                </small>
+                <small class="text-white-50">&copy; 2026 Loja Online. Todos os direitos reservados.</small>
             </div>
         </div>
     </footer>
+
     <!-- Bootstrap JS -->
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
