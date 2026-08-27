@@ -1,10 +1,13 @@
 <?php
+
 declare(strict_types=1);
+
 use App\Controllers\Cliente\ClienteController;
 use App\Controllers\Cliente\ClienteLoginController;
 use App\Controllers\Cliente\EnderecoController;
 use App\Controllers\Cliente\PedidoController;
 use App\Controllers\Cliente\PerfilController;
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -90,6 +93,32 @@ return [
         ],
     ],
     [
+        'method' => 'POST',
+        'path' => '/cliente/endereco/editar',
+        'action' => [
+            EnderecoController::class,
+            'editar',
+        ],
+    ],
+
+    [
+        'method' => 'POST',
+        'path' => '/cliente/endereco/cadastrar',
+        'action' => [
+            EnderecoController::class,
+            'cadastrar',
+        ],
+    ],
+    [
+        'method' => 'POST',
+        'path' => '/cliente/endereco/excluir',
+        'action' => [
+            EnderecoController::class,
+            'excluir',
+        ],
+    ],
+
+    [
         'method' => 'GET',
         'path' => '/cliente/pedidos',
         'action' => [
@@ -111,6 +140,14 @@ return [
         'action' => [
             PerfilController::class,
             'seguranca',
+        ],
+    ],
+    [
+        'method' => 'POST',
+        'path' => '/cliente/seguranca/senha',
+        'action' => [
+            PerfilController::class,
+            'alterarSenha',
         ],
     ],
 ];
