@@ -7,7 +7,7 @@ namespace App\Controllers\Admin;
 use App\Controllers\Controller;
 use App\Helpers\Csrf;
 
-final class DashboardController
+final class AdminController
     extends Controller
 {
     public function index(): void

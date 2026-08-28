@@ -7,7 +7,7 @@ namespace App\Controllers\Admin;
 use App\Repositories\DashboardRepository;
 use RuntimeException;
 
-final class DashboardController
+final class AdminController
 {
     public function index(): void
     {
