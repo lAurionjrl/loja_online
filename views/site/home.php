@@ -31,64 +31,20 @@ $baseUrl = defined('BASE_URL') ? BASE_URL : ''; ?>
         Quando o projeto funcionar sem /public, altere para:
         <base href="/loja_online/">
     -->
-    <base href="<?= BASE_URL ?>/">
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-        crossorigin="anonymous">
+        <base href="<?= BASE_URL ?>/">
+         <link
+         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+         rel="stylesheet"
+         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+         crossorigin="anonymous">
     <link rel="stylesheet" href="<?= htmlspecialchars($baseUrl . '/assets/css/site.css', ENT_QUOTES, 'UTF-8') ?>">
-
-<style>
-    a.linkadmin {
-        text-decoration: none;
-
-        width: 60px;
-        height: 60px;
-
-        position: fixed;
-        right: 20px;
-        bottom: 20px;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        background-color: #c70ca5;
-        color: #ffffff;
-
-        border-radius: 50%;
-
-        font-size: 24px;
-
-        z-index: 1000;
-
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-
-        transition:
-            transform 0.2s ease,
-            background-color 0.2s ease;
-    }
-
-    a.linkadmin:hover {
-        background-color: #a9098c;
-        color: #ffffff;
-        transform: scale(1.08);
-    }
-</style>
+   
 
 </head>
 
 <body>
 
-<a
-    href="admin"
-    class="linkadmin"
-    title="Painel administrativo"
-    aria-label="Acessar painel administrativo"
->
-    <i class="bi bi-person-gear"></i>
-</a>
+
     <!-- ============================================================
          1. BARRA SUPERIOR
     =====================   ======================================== -->
