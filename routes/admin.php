@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Controllers\Admin\AdminController;
 use App\Controllers\Admin\ModuloAdminController;
+use App\Controllers\Admin\AuthController;
 
 return [
 
@@ -54,6 +55,18 @@ return [
         'action' => [
             ModuloAdminController::class,
             'produtoNovo',
+        ],
+    ],
+
+    [
+        'method' => 'POST',
+
+        'path' =>
+        '/admin/produto/cadastrar',
+
+        'action' => [
+            ModuloAdminController::class,
+            'produtoCadastrar',
         ],
     ],
     [
@@ -199,6 +212,18 @@ return [
         ],
     ],
 
+    [
+        'method' => 'POST',
+
+        'path' =>
+        '/admin/estoque/limite',
+
+        'action' => [
+            ModuloAdminController::class,
+            'estoqueLimiteAtualizar',
+        ],
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Notificações
@@ -241,6 +266,17 @@ return [
         ],
     ],
 
+    [
+        'method' => 'POST',
+        'path' =>
+        '/admin/configuracoes/atualizar',
+
+        'action' => [
+            ModuloAdminController::class,
+            'configuracoesAtualizar',
+        ],
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Perfil administrativo
@@ -270,6 +306,37 @@ return [
             'perfilLista',
         ],
     ],
+    [
+        'method' => 'POST',
+        'path' => '/admin/perfil/atualizar',
+        'action' => [
+            ModuloAdminController::class,
+            'perfilAtualizar',
+        ],
+    ],
+
+    /*
+|--------------------------------------------------------------------------
+| Master atualiza outro administrador
+|--------------------------------------------------------------------------
+*/
+    [
+        'method' => 'POST',
+        'path' => '/admin/perfil/admin/atualizar',
+        'action' => [
+            ModuloAdminController::class,
+            'adminAtualizar',
+        ],
+    ],
+
+    [
+        'method' => 'POST',
+        'path' => '/admin/perfil/cadastrar',
+        'action' => [
+            ModuloAdminController::class,
+            'perfilCadastrar',
+        ],
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -294,7 +361,7 @@ return [
         'method' => 'POST',
         'path' => '/admin/sair',
         'action' => [
-            ModuloAdminController::class,
+            AuthController::class,
             'sair',
         ],
     ],

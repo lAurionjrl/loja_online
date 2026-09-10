@@ -10,7 +10,11 @@ if (PHP_SAPI !== 'cli') {
     );
 }
 
-$pdo = require __DIR__ . '/conexao.php';
+// Carrega o arquivo onde a classe Config foi declarada
+require_once __DIR__ . '/conexao.php';
+
+// Obtém a instância do PDO diretamente pela classe Config
+$pdo = Config::connect();
 
 $nome = trim(
     (string) readline(

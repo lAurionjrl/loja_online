@@ -54,7 +54,7 @@ final class UsuarioAdminRepository
             nome,
             email,
             status,
-            nivel_admin,
+            nivel_admin,    
             ultimo_acesso,
             criado_em,
             atualizado_em
